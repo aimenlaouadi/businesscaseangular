@@ -1,0 +1,15 @@
+
+<h2>Nos produits</h2>
+<div class="row">
+    <div class="col-md-4" *ngFor="let product of products">
+      <div class="card mt-3 mb-3" style="width: 18rem;">
+        <img src="http://unsplash.it/200/200?random&gravity=center" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h4>{{ product.id }}</h4>
+          <p class="card-text">{{ product.product_name }}</p>
+          <p>{{ product.product_description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  

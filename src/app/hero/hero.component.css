@@ -1,0 +1,335 @@
+@import url('https://fonts.googleapis.com/css?family=Shrikhand|Roboto&display=swap');
+
+/* Styles globaux */
+body {
+  background: #00b4ff; /* Bleu ciel */
+  color: #333;
+  font: 100% Lato, Arial, sans-serif;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+#washer {
+  margin: 50px auto;
+  width: 200px;
+  text-align: center;
+}
+
+.centered {
+  margin: 0 auto;
+  text-align: center;
+  font-family: 'Shrikhand', cursive;
+}
+
+.laundry {
+  font-family: 'Shrikhand', cursive;
+  font-size: 56px;
+  margin: 25px auto;
+  text-align: center;
+}
+
+.gray {
+  color: #999;
+}
+
+p, h3 {
+  font-family: 'Roboto', sans-serif;
+  width: 50em;
+  margin: 25px auto;
+}
+
+h3 {
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+  outline: none;
+}
+
+/* Animation de rotation de la machine à laver */
+@keyframes circle {
+  from {
+    transform: rotate(0deg) rotate(-360deg);
+  }
+  to {
+    transform: rotate(0deg) rotate(360deg);
+  }
+}
+
+#door {
+  background-image: linear-gradient(top, #f4f1ee, #fff);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, .3), inset 0px 4px 1px 1px white, inset 0px -3px 1px 1px rgba(204,198,197,.5);
+  border-radius: 50%;
+  height: 200px;
+  width: 200px;
+  position: relative;
+  border: 2px solid #ccc;
+}
+
+#inner-door {
+  background: #666;
+  border-radius: 50%;
+  height: 140px;
+  width: 140px;
+  position: relative;
+  border: 2px solid #ccc;
+  top: 28px;
+  left: 28px;
+}
+
+#drum {
+  background: #fff;
+  width: 120px;
+  height: 120px;
+  margin: 5px auto;
+  border-top: 15px solid #bbb;
+  border-left: 15px solid #bbb;
+  border-right: 15px solid transparent;
+  border-bottom: 15px solid #bbb;
+  border-radius: 50%;
+  box-shadow: 0 0 5px 1px #aaa;
+  animation: circle 3s infinite linear;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -60px 0 0 -60px;
+}
+
+.handle:after {
+  content: '‹ ›';
+  text-align: center;
+  font-size: 24px;
+  line-height: 26px;
+  display: block;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  top: 50%;
+  left: 102%;
+  font-weight: 700;
+  margin: -15px 0 0 -15px;
+  background: #fff;
+  box-shadow: 0px 1px 1px #222, inset 0px 1px 1px white;
+}
+
+.arc {
+  overflow: hidden;
+  position: absolute;
+  top: -1em;
+  right: 50%;
+  bottom: 50%;
+  left: -1em;
+  transform-origin: 100% 100%;
+  transform: rotate(165deg) skewX(60deg);
+}
+
+.arc:before {
+  box-sizing: border-box;
+  display: block;
+  border: solid 1.3em #777;
+  width: 225%;
+  height: 210%;
+  border-radius: 50%;
+  transform: skewX(-60deg);
+  content: '';
+}
+
+.page {
+  height: 115px;
+  width: 115px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #ccc;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.percent {
+  color: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  font-weight: lighter;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.temperature, .temperature-num, .temperature-sign {
+  display: inline-block;
+  font-size: 1.5em;
+}
+
+.water {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 5;
+  bottom: 0;
+  left: 0;
+  background: #32bafa;
+  transform: translate(0, 50%);
+}
+
+.water-inner {
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.water-wave {
+  width: 200%;
+  position: absolute;
+  bottom: 100%;
+}
+
+.water-wave-back {
+  right: 0;
+  fill: #aaa;
+  animation: wave-back 1.9s infinite linear;
+}
+
+.water-wave-front {
+  left: 0;
+  fill: #32bafa;
+  margin-bottom: -1px;
+  animation: wave-front 1.2s infinite linear;
+}
+
+@keyframes wave-front {
+  100% {
+    transform: translate(-50%, 0);
+  }
+}
+
+@keyframes wave-back {
+  100% {
+    transform: translate(50%, 0);
+  }
+}
+
+/* Animation des bulles */
+@keyframes animateBubble {
+  0% {
+    margin-top: 1000px;
+  }
+  100% {
+    margin-top: -100%;
+  }
+}
+
+@keyframes sideWays {
+  0% {
+    margin-left: 0px;
+  }
+  100% {
+    margin-left: 50px;
+  }
+}
+
+.x1 {
+  animation: animateBubble 25s linear infinite, sideWays 2s ease-in-out infinite alternate;
+  left: -5%;
+  top: 5%;
+  transform: scale(0.6);
+}
+
+.x2 {
+  animation: animateBubble 20s linear infinite, sideWays 4s ease-in-out infinite alternate;
+  left: 5%;
+  top: 80%;
+  transform: scale(0.4);
+}
+
+.x3 {
+  animation: animateBubble 28s linear infinite, sideWays 2s ease-in-out infinite alternate;
+  left: 10%;
+  top: 40%;
+  transform: scale(0.7);
+}
+
+.x4 {
+  animation: animateBubble 22s linear infinite, sideWays 3s ease-in-out infinite alternate;
+  left: 20%;
+  top: 0;
+  transform: scale(0.3);
+}
+
+.x5 {
+  animation: animateBubble 29s linear infinite, sideWays 4s ease-in-out infinite alternate;
+  left: 30%;
+  top: 50%;
+  transform: scale(0.5);
+}
+
+.x6 {
+  animation: animateBubble 21s linear infinite, sideWays 2s ease-in-out infinite alternate;
+  left: 50%;
+  top: 0;
+  transform: scale(0.8);
+}
+
+.x7 {
+  animation: animateBubble 20s linear infinite, sideWays 2s ease-in-out infinite alternate;
+  left: 65%;
+  top: 70%;
+  transform: scale(0.4);
+}
+
+.x8 {
+  animation: animateBubble 22s linear infinite, sideWays 3s ease-in-out infinite alternate;
+  left: 80%;
+  top: 10%;
+  transform: scale(0.3);
+}
+
+.x9 {
+  animation: animateBubble 29s linear infinite, sideWays 4s ease-in-out infinite alternate;
+  left: 90%;
+  top: 50%;
+  transform: scale(0.6);
+}
+
+.x10 {
+  animation: animateBubble 26s linear infinite, sideWays 2s ease-in-out infinite alternate;
+  left: 80%;
+  top: 80%;
+  transform: scale(0.3);
+}
+
+.bubble {
+  border-radius: 50%;
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2), inset 0px 10px 30px 5px rgba(255, 255, 255, 1);
+  height: 200px;
+  position: absolute;
+  width: 200px;
+}
+
+/* Conteneur des bulles */
+.bubbles {
+  position: absolute;
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  overflow: hidden;
+  width: 100%;
+}
+
+
