@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IUser } from '../module/IUser';
+import { IUser } from '../../module/IUser';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class UserService {
   constructor(private http: HttpClient) {}
   
    register(user:IUser): Observable<any> {
-    return this.http.post(`${this.url}/userss`, user);
+    return this.http.post(`${this.url}/users`, user);
   }
 }
 

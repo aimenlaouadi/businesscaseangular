@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { AuthService } from '../shared/servicebusinesscase/authservice.service';
+
 import { NgIf } from '@angular/common';
+import { AuthService } from '../shared/servicebusinesscase/authentification/authservice.service';
 
 @Component({
   selector: 'app-header',

@@ -2,7 +2,7 @@ import { CommonModule, NgIf } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserService } from '../shared/servicebusinesscase/user.service';
+import { UserService } from '../shared/servicebusinesscase/user/user.service';
 
 @Component({
   selector: 'app-inscription',
@@ -27,7 +27,7 @@ export class InscriptionComponent {
 
   onSubmit() {
     if (this.loginForm.valid) {
-      this.isSubmitting = true; // Start animation and popup
+      this.isSubmitting = true; 
       this.service.register(this.loginForm.value).subscribe({
         next: (response) => {
           console.log('Inscription réussie', response);
@@ -36,14 +36,14 @@ export class InscriptionComponent {
           console.log(this.loginForm.value);
           setTimeout(() => {
             this.showPopup = false;
-            this.router.navigate(['/']); // Redirect to home page
-          }, 3000); // Hide popup and redirect after 3 seconds
+            this.router.navigate(['/']); 
+          }, 3000); 
         },
         error: (error) => {
           console.error('Erreur inscription', error);
           this.isRegistrationSuccessful = false;
           this.showPopup = false;
-          this.isSubmitting = false; // Stop animation and popup
+          this.isSubmitting = false; 
           console.log(this.loginForm.value);
         }
       });

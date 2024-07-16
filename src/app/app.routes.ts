@@ -7,6 +7,7 @@ import { InscriptionComponent } from './inscription/inscription.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { ContactComponent } from './contact/contact.component';
 import { authGuard } from './shared/guards/auth.guard';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 export const routes: Routes = [
     {path:'' , component:HomeComponent},
@@ -15,5 +16,6 @@ export const routes: Routes = [
     {path:'inscription' , component:InscriptionComponent},
     {path:'connexion' , component:ConnexionComponent},
     {path:'contact' , component:ContactComponent},
+    {path:'dashboard' , component:DashboardComponent},
     {path: '**', component:Error404Component}
 ]
