@@ -11,6 +11,7 @@ import { EntityService } from '../entity.service';
   styleUrl: './product.component.css',
   providers: [EntityService, { provide: 'baseUri',
   useValue: '/api/products' }],  
+
 })
 export class ProductComponent implements OnInit{
 

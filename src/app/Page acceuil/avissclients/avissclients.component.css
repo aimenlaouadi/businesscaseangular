@@ -1,0 +1,16 @@
+h2, h3{
+    text-align: center;
+    font-weight: bold;
+    color:#0097B2;
+
+}
+
+p{
+    text-align: justify;
+    color: #002f87;
+    text-align: justify;
+}
+
+.border{
+  padding: 20px;
+}

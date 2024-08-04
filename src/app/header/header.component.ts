@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-
 import { NgIf } from '@angular/common';
 import { AuthService } from '../shared/servicebusinesscase/authentification/authservice.service';
 
@@ -12,9 +11,11 @@ import { AuthService } from '../shared/servicebusinesscase/authentification/auth
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
+user: any;
+  constructor(private authService: AuthService, private router: Router) { 
 
-  constructor(private authService: AuthService, private router: Router) { }
-
+  }
+  
   
   isLogged(): boolean {
     const token = localStorage.getItem('token');
@@ -24,7 +25,10 @@ export class HeaderComponent {
 
   logout(): void {
     this.authService.logout();
+    localStorage.removeItem('token');
+    this.router.navigate(['/']);
   }
 
+  
 
 }

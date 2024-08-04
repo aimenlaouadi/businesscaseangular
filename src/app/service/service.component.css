@@ -1,0 +1,16 @@
+h2 {
+    color: #002f87; 
+  }
+
+p {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}  
+
+h5{
+  border-bottom: 3px solid #002f87;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+

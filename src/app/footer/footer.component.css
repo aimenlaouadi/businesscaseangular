@@ -1,0 +1,23 @@
+.hr {
+    width: 60px;
+    height: 2px;
+    margin: 10px auto;
+    background-color: #0097B2;
+  }
+
+  a {
+    color: #101010;
+    text-decoration: none; 
+  }
+
+  a:hover {
+    color: #0097B2; 
+  }
+
+  .border-footer{
+    border-top: 3px solid #0097B2;;
+  }
+  
+  .bg-footer{
+    background-color: #F5F7FA;
+  }

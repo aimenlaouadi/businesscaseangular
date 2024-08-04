@@ -4,7 +4,7 @@ service_type:string,
 service_coef:number,
 service_price:number,
 description:string,
-
+images:string,
 
 }
 
@@ -14,5 +14,6 @@ id:number,
 product_name:string,
 product_description:string,
 
-
 }
+
+

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiListResponse } from './typescript/api';
-import { environment } from '../environments/environment.development';
+import { environment } from './shared/environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
