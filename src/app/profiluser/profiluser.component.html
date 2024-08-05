@@ -1,34 +1,40 @@
-<div class="container mb-5 mt-5">
+<div class="container mb-5 mt-5 ">
     <div class="row justify-content-center">
       <div class="col-md-6">
         <div class="col-md-6">
-            <div *ngIf="showSuccessMessage" class="alert alert-success" role="alert">
-              {{ message }}
-            </div>       
-        <h1 *ngIf="user">Profil de {{ user.username }}</h1>
-        <form *ngIf="form" [formGroup]="form">
-          <div class="form-group">
-            <label for="username">Username :</label>
-            <input type="text" formControlName="username" class="form-control" id="username" placeholder="Entrez votre username">
+          <div *ngIf="showSuccessMessage" class="alert alert-success" role="alert">
+            {{ message }}
           </div>
-          <div class="form-group">
-            <label for="lastname">Lastname :</label>
-            <input type="text" formControlName="lastname" class="form-control" id="lastname" placeholder="Entrez votre lastname">
+          <div *ngIf="showErrorMessage" class="alert alert-danger" role="alert">
+            {{ message }}
           </div>
-          <div class="form-group">
-            <label for="firstname">Firstname :</label>
-            <input type="text" formControlName="firstname" class="form-control" id="firstname" placeholder="Entrez votre firstname">
-          </div>
-          <div class="form-group">
-            <label for="telephone">Telephone :</label>
-            <input type="text" formControlName="telephone" class="form-control" id="telephone" placeholder="Entrez votre téléphone">
-          </div>
-          <div class="mt-4">
-            <button type="button" (click)="updateUser()" class="btn btn-primary me-4">Mettre à jour</button>
-            <button type="button" (click)="deleteUser()" class="btn btn-danger">Supprimer</button>
-          </div>
-
-        </form>
+          <h1 *ngIf="user">Profil de {{ user.username }}</h1>
+          <form *ngIf="form" [formGroup]="form">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input id="username" formControlName="username" type="text" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="lastname">Lastname :</label>
+              <input type="text" formControlName="lastname" class="form-control" id="lastname" placeholder="Entrez votre lastname">
+            </div>
+            <div class="form-group">
+              <label for="firstname">Firstname :</label>
+              <input type="text" formControlName="firstname" class="form-control" id="firstname" placeholder="Entrez votre firstname">
+            </div>
+            <div class="form-group">
+              <label for="telephone">Telephone :</label>
+              <input type="text" formControlName="telephone" class="form-control" id="telephone" placeholder="Entrez votre téléphone">
+            </div>
+            <div class="mt-4">
+              <button type="button" (click)="updateUser()" class="btn btn-primary me-4">Mettre à jour</button>
+              <button type="button" (click)="deleteUser()" class="btn btn-danger">Supprimer</button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>
+  
+
+
