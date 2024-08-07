@@ -50,7 +50,9 @@ export class ProfiluserComponent implements OnInit {
 
   updateUser(): void {
     if (this.form.valid) {
-      this.profiluserService.updateUser(this.user.id, this.form.value).subscribe(
+      this.profiluserService.updateUser(this.user.id, this.form.value
+        
+      ).subscribe(
         () => {
           this.message = 'Votre demande a bien été prise en compte, merci!';
           this.showSuccessMessage = true;

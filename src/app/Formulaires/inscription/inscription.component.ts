@@ -27,6 +27,7 @@ export class InscriptionComponent {
   isRegistrationSuccessful: boolean = false;
   showPopup: boolean = false;
   isSubmitting: boolean = false;
+  registrationError: string | null = null; // Variable to store the error message
 
   onSubmit() {
     if (this.loginForm.valid) {
@@ -36,6 +37,7 @@ export class InscriptionComponent {
           console.log('Inscription réussie', response);
           this.isRegistrationSuccessful = true;
           this.showPopup = true;
+          this.registrationError = null; // Clear any previous errors
           console.log(this.loginForm.value);
           setTimeout(() => {
             this.showPopup = false;
@@ -46,7 +48,12 @@ export class InscriptionComponent {
           console.error('Erreur inscription', error);
           this.isRegistrationSuccessful = false;
           this.showPopup = false;
-          this.isSubmitting = false; 
+          this.isSubmitting = false;
+          if (error.status === 409) { 
+            this.registrationError = 'Une erreur est survenue lors de l\'inscription. Veuillez réessayer plus tard.';
+          } else {
+            this.registrationError = 'Le nom d\'utilisateur existe déjà. Veuillez en choisir un autre.';
+          }
           console.log(this.loginForm.value);
         }
       });

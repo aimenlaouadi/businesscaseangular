@@ -74,3 +74,12 @@
         padding-right: 15px;
     }
   }
+
+  .enchiffres{
+    margin-top: 150px;
+    margin-bottom: 150px;
+  }
+
+  .bordertop{
+  border-top: #002f87 solid 3px;
+  }

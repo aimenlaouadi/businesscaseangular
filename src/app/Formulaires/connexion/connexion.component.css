@@ -1,0 +1,25 @@
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+.section-background {
+    background-image: url('../../../../public/images/image-presentation.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 800px;
+    width: 100%;
+    filter: opacity(65%);
+}
+
+.form-margin{
+    padding: 40px;
+    margin-top: 150px;
+    background:#0097B2;
+    color: white;
+    font-weight: bold;
+    width: 40%;
+    filter: opacity(100%);
+    border: lightgray solid 3px;
+    border-radius: 20px;
+}

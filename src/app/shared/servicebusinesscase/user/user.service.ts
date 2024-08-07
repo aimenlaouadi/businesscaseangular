@@ -15,5 +15,10 @@ export class UserService {
    register(user:IUser): Observable<any> {
     return this.http.post(`${this.url}/users`, user);
   }
+
+  checkUsernameAvailability(username: string): Observable<boolean> {
+    return this.http.get<boolean>(`/api/check-username?username=${username}`);
+  }
+  
 }
 
