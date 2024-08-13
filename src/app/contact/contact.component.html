@@ -1,40 +1,30 @@
-<section class="bg" >
-		
-  <div
-    class="container">
-    <!-- container si on touche pas container-fluid si on touche -->
+<section class="bg">
+  <div class="container">
     <div class="row h-screen justify-content-center align-items-center">
       <div class="col-lg-12">
-        <div class="">
-
-        </div>
+        <div class=""></div>
       </div>
     </div>
   </div>
 </section>
 
-
-<section class="bg" >
-		
-  <div
-    class="container">
-    <!-- container si on touche pas container-fluid si on touche -->
+<section class="bg">
+  <div class="container">
     <div class="row h-screen justify-content-center align-items-center">
-      <div class="col-lg-4  horaire">
+      <div class="col-lg-4 horaire">
         <div class="">
           <h3><span>Notre pressing est Ouvert</span></h3>
-          <p>Du Lundi au Samedi de 9h00 à 19h00 non-Stop</p>
+          <p>Du Lundi au Samedi de 9h00 à 19h00 non-stop</p>
         </div>
       </div>
     </div>
   </div>
 </section>
-
 
 <section class="hauteur">
   <div class="row align">
     <div class="col-md-4">
-      <h3><span>Ecrivez-nous</span></h3>
+      <h3><span>Écrivez-nous</span></h3>
     </div>
     <div class="col-md-4">
       <div>
@@ -48,25 +38,31 @@
     </div>
   </div>
 
-  <div class="row justify-content-center contact-section ">
-    <div class="col-md-4 text-white ">
-      <form class="form">
+  <div class="row justify-content-center contact-section">
+    <div class="col-md-4 text-white">
+      <div *ngIf="showSuccessMessage" class="alert alert-success" role="alert">
+        {{ message }}
+      </div>
+      <div *ngIf="showErrorMessage" class="alert alert-danger" role="alert">
+        {{ message }}
+      </div>
+      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
         <h4>Nous écrire</h4>
         <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Nom</label>
-          <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nom">
+          <label for="lastname" class="form-label">Nom</label>
+          <input type="text" formControlName="lastname" class="form-control" id="lastname" placeholder="Nom">
         </div>
         <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Prénom</label>
-          <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Prénom">
+          <label for="firstname" class="form-label">Prénom</label>
+          <input type="text" formControlName="firstname" class="form-control" id="firstname" placeholder="Prénom">
         </div>
         <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">E-mail</label>
-          <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="E-mail">
+          <label for="email" class="form-label">E-mail</label>
+          <input type="email" formControlName="email" class="form-control" id="email" placeholder="E-mail">
         </div>
         <div class="mb-4">
-          <label for="exampleFormControlTextarea1" class="form-label">Message</label>
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="7" placeholder="Votre message"></textarea>
+          <label for="message" class="form-label">Message</label>
+          <textarea formControlName="message" class="form-control" id="message" rows="4" placeholder="Votre message"></textarea>
         </div>
         <button type="submit" class="btn btn-secondary mb-4">Envoyer</button>
       </form>
@@ -76,6 +72,3 @@
     </div>
   </div>
 </section>
-
-
-
