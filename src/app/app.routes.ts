@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
 import { Error404Component } from './error404/error404.component';
-import { ProductComponent } from './product/product.component';
 import { ServiceComponent } from './service/service.component';
 import { ContactComponent } from './contact/contact.component';
 import { authGuard } from './shared/guards/auth.guard';
@@ -15,7 +14,6 @@ import { ProfiluserComponent } from './profiluser/profiluser.component';
 export const routes: Routes = [
     {path:'' , component:HomeComponent},
     {path:'service' , component:ServiceComponent},
-    {path:'product' , component:ProductComponent},
     {path:'inscription' , component:InscriptionComponent},
     {path:'connexion' , component:ConnexionComponent},
     {path:'contact' , component:ContactComponent},

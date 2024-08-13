@@ -12,9 +12,6 @@
           <a class="nav-link active" aria-current="page" routerLink="/">Accueil</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" routerLink="product">Product</a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link active" routerLink="service">Services</a>
         </li>
         <li class="nav-item">
@@ -40,7 +37,7 @@
         <a class="nav-link" routerLink="/connexion" class="btn btn-secondary">Se connecter</a>
       </div>
       <div class="d-flex" *ngIf="isLogged() else notLogged">
-        <a class="nav-link" routerLink="/profiluser"  class="btn btn-info me-2 text-white">Accéder aux profils</a>
+        <a class="nav-link" routerLink="/profiluser"  class="btn btn-info me-2">Accéder à mon profils</a>
         <button type="button" class="btn btn-secondary" (click)="logout()">Se déconnecter</button>
       </div>
       <ng-template #notLogged>
