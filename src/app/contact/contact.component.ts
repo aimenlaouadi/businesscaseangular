@@ -47,7 +47,7 @@ export class ContactComponent {
           this.showErrorMessage = true;
           setTimeout(() => {
             this.showErrorMessage = false;
-          }, 1000);
+          }, 300);
         }
       );
     } else {
