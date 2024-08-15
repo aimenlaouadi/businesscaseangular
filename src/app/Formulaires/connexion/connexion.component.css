@@ -1,42 +1,3 @@
-body, html {
-    height: 100%;
-    margin: 0;
-}
-
-.section-background {
-    background: lightgray;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 800px;
-    width: 100%;
-    filter: opacity(65%);
-}
-
-.form-margin{
-    padding: 40px;
-    margin-top: 150px;
-    background:#0097B2;
-    color: white;
-    font-weight: bold;
-    width: 40%;
-    filter: opacity(100%);
-    border: lightgray solid 3px;
-    border-radius: 20px;
-    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
-}
-
-.btn{
-    background: lightgray;
-    color: 
-    white;
-    font-weight: bold;
-}
-
-.btn:hover{
-    background: #0097B2;
-}
-
-
 @import url('https://fonts.googleapis.com/css?family=Shrikhand|Roboto&display=swap');
 
 
@@ -353,3 +314,39 @@ a {
   overflow: hidden;
   width: 100%;
 }
+
+
+
+.section-background{
+  background: lightgray;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 800px;
+  width: 100%;
+  filter: opacity(65%);
+}
+
+.form-margin{
+  padding: 40px;
+  margin-top: 150px;
+  background:#0097B2;
+  color: white;
+  font-weight: bold;
+  width: 40%;
+  filter: opacity(100%);
+  border: lightgray solid 3px;
+  border-radius: 20px;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+}
+
+.btn{
+  background: lightgray;
+  color: 
+  white;
+  font-weight: bold;
+}
+
+.btn:hover{
+  background: #0097B2;
+}
+

@@ -4,6 +4,7 @@ import { ReactiveFormsModule, FormControl, Validators, FormGroup } from '@angula
 import { ProfiluserService } from '../shared/servicebusinesscase/profiluserservice/profiluser.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../shared/servicebusinesscase/authentification/authservice.service';
+import { User } from '../typescript/entites';
 
 @Component({
   selector: 'app-profiluser',
@@ -29,35 +30,53 @@ export class ProfiluserComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       const userId = +params['id']; // assurez-vous que l'ID est un nombre
-      this.profiluserService.getUser(userId).subscribe(
-        user => {
-          this.user = user;
-          this.form = new FormGroup({
-            username: new FormControl(this.user.username, [Validators.required]),
-            lastname: new FormControl(this.user.lastname, [Validators.required]),
-            firstname: new FormControl(this.user.firstname, [Validators.required]),
-            telephone: new FormControl(this.user.telephone, [Validators.required])
-          });
-        },
-        error => {
-          console.error('Erreur lors de la récupération de l\'utilisateur', error);
-          this.message = 'Erreur lors de la récupération de l\'utilisateur';
-          this.showErrorMessage = true;
-        }
-      );
+      if (!isNaN(userId)) {
+        this.profiluserService.getUser(userId).subscribe(
+          user => {
+            this.user = user;
+            this.form = new FormGroup({
+              username: new FormControl(this.user.username, [Validators.required]),
+              lastname: new FormControl(this.user.lastname, [Validators.required]),
+              firstname: new FormControl(this.user.firstname, [Validators.required]),
+              telephone: new FormControl(this.user.telephone, [Validators.required]),
+              password: new FormControl(this.user.password, [Validators.required]),
+            });
+          },
+          error => {
+            console.error('Erreur lors de la récupération de l\'utilisateur', error);
+            this.message = 'Erreur lors de la récupération de l\'utilisateur';
+            this.showErrorMessage = true;
+          }
+        );
+      } else {
+        this.message = 'ID utilisateur invalide';
+        this.showErrorMessage = true;
+      }
     });
   }
 
   updateUser(): void {
     if (this.form.valid) {
-      this.profiluserService.updateUser(this.user.id, this.form.value).subscribe(
-        () => {
-          this.message = 'Votre demande a bien été prise en compte, merci!';
+      const updatedUser: User = {
+        id: this.user.id,
+        username: this.form.get('username')?.value,
+        lastname: this.form.get('lastname')?.value,
+        firstname: this.form.get('firstname')?.value,
+        telephone: this.form.get('telephone')?.value,
+        password: this.form.get('password')?.value,
+      };
+  
+      console.log('Données à envoyer pour la mise à jour :', updatedUser); // Vérification des données
+      
+      this.profiluserService.updateUser(updatedUser.id, updatedUser).subscribe(
+        (response) => {
+          console.log(response);
+          this.message = 'Votre profil a été mis à jour avec succès!';
           this.showSuccessMessage = true;
           this.showErrorMessage = false;
           setTimeout(() => {
             this.showSuccessMessage = false;
-          }, 3000);
+          }, 1000);
         },
         error => {
           console.error('Erreur lors de la mise à jour du profil', error);
@@ -65,13 +84,15 @@ export class ProfiluserComponent implements OnInit {
           this.showErrorMessage = true;
         }
       );
+    
     }
   }
+  
 
   deleteUser(): void {
     this.profiluserService.deleteUser(this.user.id).subscribe(
       () => {
-        this.message = 'Votre profil a bien été supprimé, merci!';
+        this.message = 'Votre profil a été supprimé avec succès!';
         this.showSuccessMessage = true;
         this.showErrorMessage = false;
         setTimeout(() => {

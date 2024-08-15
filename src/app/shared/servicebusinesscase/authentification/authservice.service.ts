@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 
@@ -12,6 +12,7 @@ export interface IToken {
 })
 export class AuthService {
   private url = 'http://localhost:8000/api';
+  private currentUser: any;
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -37,5 +38,28 @@ export class AuthService {
     this.router.navigate(['connexion']);
   }
 
+  // Nouvelle méthode pour récupérer l'utilisateur connecté
+  fetchCurrentUser(): Observable<any> {
+    const token = this.getToken();
+    if (!token) {
+      return new Observable(observer => {
+        observer.error('Token not found');
+        observer.complete();
+      });
+    }
 
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`
+    });
+
+    return this.http.get<any>(`${this.url}/me`, { headers });
+  }
+
+  setCurrentUser(user: any): void {
+    this.currentUser = user;
+  }
+
+  getCurrentUser(): any {
+    return this.currentUser;
+  }
 }

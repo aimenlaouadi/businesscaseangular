@@ -1,34 +1,32 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../shared/servicebusinesscase/authentification/authservice.service';
 import { Router, RouterLink } from '@angular/router';
 import { NgIf } from '@angular/common';
-import { AuthService } from '../shared/servicebusinesscase/authentification/authservice.service';
 
 @Component({
   selector: 'app-header',
-  standalone: true,
-  imports: [RouterLink, NgIf],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
+  standalone: true,  
+  imports: [RouterLink, NgIf],  
+  styleUrls: ['./header.component.css']
 })
-export class HeaderComponent {
-user: any;
-  constructor(private authService: AuthService, private router: Router) { 
+export class HeaderComponent implements OnInit {
+  user: any;  
 
+  constructor(private authService: AuthService, private router: Router) { }
+
+  ngOnInit(): void {
+    if (this.authService.isLogged()) {
+      this.user = this.authService.getCurrentUser(); // Récupère les infos de l'utilisateur
+    }
   }
-  
-  
+
   isLogged(): boolean {
-    const token = localStorage.getItem('token');
-    return !!token;
+    return this.authService.isLogged();
   }
-
 
   logout(): void {
     this.authService.logout();
-    localStorage.removeItem('token');
     this.router.navigate(['/']);
   }
-
-  
-
 }

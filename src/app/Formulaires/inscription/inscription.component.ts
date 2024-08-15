@@ -41,7 +41,7 @@ export class InscriptionComponent {
           console.log(this.loginForm.value);
           setTimeout(() => {
             this.showPopup = false;
-            this.router.navigate(['/']); 
+            this.router.navigate(['connexion']); 
           }, 3000); 
         },
         error: (error) => {

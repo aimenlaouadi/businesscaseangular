@@ -1,0 +1,9 @@
+.para{
+    margin-block: 0;
+    margin: 0;
+}
+
+.Notre-phylosophie,  .text-presentation, .Notre-histoire, .team{
+margin-top: 150px;
+margin-bottom: 150px;
+}
