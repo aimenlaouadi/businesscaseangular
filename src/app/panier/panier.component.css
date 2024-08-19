@@ -1,0 +1,41 @@
+.order-section {
+    padding: 20px;
+  }
+  
+  .product-details {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  
+  .product-details img {
+    max-width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+  }
+  
+  .accordion-button {
+    background-color: #f8f9fa;
+    color: #333;
+  }
+  
+  .accordion-button:focus {
+    box-shadow: none;
+  }
+  
+  button.btn-outline-primary {
+    border-color: #ff6f61;
+    color: #ff6f61;
+  }
+  
+  button.btn-outline-primary:hover {
+    background-color: #ff6f61;
+    color: white;
+  }
+  
+  .text-end {
+    text-align: right;
+  }
+  

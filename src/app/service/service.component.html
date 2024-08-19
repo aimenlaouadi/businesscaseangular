@@ -1,65 +1,59 @@
+<section class="couleurtop">
+  <div class="container">
+    <div class="row">
+      <h5>Mes Services</h5>
 
+      <div class="col-lg-6" *ngFor="let service of services">
+        <div class="mb-4">
+          <h2>{{ service.service_type }}</h2>
+          <p>{{ service.description }}</p>
+          <img [src]="service.images" width="400px" alt="Image de {{ service.service_type }}"><br>
+          <button (click)="selectService(service)" class="btn btn-primary mt-3">Sélectionner ce service</button>
+        </div>
+      </div>
+    </div>
 
+    <div class="row mt-5" *ngIf="selectedServices.length > 0">
+      <div class="col-lg-12">
+        <h2>Votre Commande</h2>
+        <div class="accordion" id="selectedServiceAccordion">
+          <div class="accordion-item" *ngFor="let service of selectedServices; let i = index">
+            <h2 class="accordion-header">
+              <button class="accordion-button" type="button" (click)="toggleAccordion(i)">
+                Votre Service Sélectionné : {{ service.service_type }}
+              </button>
+            </h2>
+            <div [ngClass]="{'show': activeAccordionIndex === i}" class="accordion-collapse collapse">
+              <div class="accordion-body">
+                <p>Prix Unitaire : {{ service.service_price }} €</p>
 
-  <!--section Service-->
-  <section class="couleurtop" >
-    <div class="container"> 
-        <div class="row">
-                <h5>Mes Services</h5>
-                
-                <div class="col-lg-6">
-                    <div class=" mb-4 ">
-                      <h2>Service Pressing</h2>
-                        <p>Chez Express Pressing, nous proposons un service de nettoyage à sec traditionnel de votre linge avec le plus grand soin sans que vous ayez besoin de vous déplacer !
-
-                          Nous offrons tous les services de pressing que vous pouvez retrouver dans un pressing traditionnel ; le nettoyage de tous vos vêtements même les plus délicats comme votre robe de marié ou de votre linge de maison...
-                          
-                          Nous vous faisons bénéficier de notre plus grand savoir-faire tout en vous offrant une livraison gratuite à votre domicile ou sur votre lieu de travail. </p>
-                    </div>   
-
+                <!-- Affichage des produits associés -->
+                <div *ngFor="let serviceProduct of service.serviceProducts">
+                  <div *ngIf="serviceProduct.product">
+                    <h4>Produit associé : {{ serviceProduct.product.product_name }}</h4>
+                    <p>Description : {{ serviceProduct.product.product_description }}</p>
+                  </div>
+                    <!-- Affichage des items et des quantités -->
+                    <div *ngFor="let item of serviceProduct.items">
+                      <p>Prix : {{ item.price }} €</p>
+                      <div class="quantity-control">
+                        <button (click)="decreaseItemQuantity(item)" class="btn btn-secondary">-</button>
+                        <span class="mx-2">{{ item.quantite }}</span>
+                        <button (click)="increaseItemQuantity(item)" class="btn btn-secondary">+</button>
+                      </div>
+                      <p>Total pour cet item : {{ item.quantite * item.price }} €</p>
+                    </div>
+                  </div>
                 </div>
-
-                <div class="col-lg-6">
-                  <div class=" mb-4 ">
-                     <img src="/images/image1.jpg">
-                  </div>   
-
               </div>
-              <div class="col-lg-6">
-                <div class=" mb-4 ">
-                  <img src="/images/image2.jpg">
-                </div>   
-
             </div>
-
-            <div class="col-lg-6">
-              <div class=" mb-4 ">
-                 <h2>Repassage</h2>
-                 <p>Vous en avez assez de perdre des heures à faire le repassage chaque semaine et vous aimeriez passer ce temps pour vous occuper de vous et de votre famille ? Confiez cela à des professionnels comme Express Pressing et vous ne pourrez plus vous en passer !
-
-                  Express Pressing vous propose un service de repassage de chemises et repassage au kilos. </p>
-              </div>   
-
           </div>
-          <div class="col-lg-6">
-            <div class=" mb-4 ">
-                <h2>Blanchisserie</h2>
-                <p>Laissez prendre soin à votre place pour le lavage de vos draps, couettes et autres linges et vous serez ravis du résultat !
-
-                  Nous collectons votre linge et nous vous le retournons propre en 48 heures.
-                  
-                  Que vous soyez un particulier, un hôtel ou un restaurant, avec Express Pressing, vous allez gagner beaucoup de temps, avoir un linge parfaitement propre et à des prix parmi les plus bas du marché ! </p>
-            </div>   
-
         </div>
 
-        <div class="col-lg-6">
-          <div class=" mb-4 ">
-            <img src="/images/image3.jpg">
-          </div>   
-
-      </div>                       
+        <div class="total mt-4">
+          <h3>Total général : {{ getTotal() }} €</h3>
+          <button class="btn btn-success">Ajouter au Panier</button>
         </div>
+      </div>
     </div>
 </section>
-

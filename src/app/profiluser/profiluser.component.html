@@ -1,14 +1,38 @@
-<div class="container mb-5 mt-5 ">
-    <div class="row justify-content-center">
-      <div class="col-md-6">
-        <div class="col-md-6">
+    
+    <section class="container profil">
+      <div class="row">
+        <!-- Colonne latérale gauche pour l'image de profil et le menu -->
+        <div class="col-lg-4 col-md-4  text-white text-center p-4 rounded-start bg-profil">
+          <div class="mb-4">
+            <!-- Image de profil -->
+            <img src="/images/profil.jpg" class="rounded-circle img-fluid" alt="Profile Picture" width="150px">
+            <h3 class="mt-3 text-uppercase">{{ user?.username }}</h3>
+          </div>
+          <!-- Menu de profil -->
+          <ul class="nav flex-column text-center">
+            <li class="nav-item">
+              <a class="nav-link active text-white" href="#">Profile</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#">Order History</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#">Preferences</a>
+            </li>
+          </ul>
+        </div>
+    
+        <!-- Colonne droite pour le formulaire de profil -->
+        <div class="col-lg-8 col-md-8 bg-white p-4 rounded-end shadow-sm">
+          <h2 class="mb-4">INFORMATION PROFIL</h2>
+    
           <div *ngIf="showSuccessMessage" class="alert alert-success" role="alert">
             {{ message }}
           </div>
           <div *ngIf="showErrorMessage" class="alert alert-danger" role="alert">
             {{ message }}
           </div>
-          <h1 *ngIf="user">Profil de {{ user.username }}</h1>
+    
           <form *ngIf="form" [formGroup]="form">
             <div class="form-group">
                 <label for="username">Username</label>
@@ -37,8 +61,7 @@
           </form>
         </div>
       </div>
-    </div>
-  </div>
+    </section>
   
 
 

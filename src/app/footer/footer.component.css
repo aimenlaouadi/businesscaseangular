@@ -21,3 +21,8 @@
   .bg-footer{
     background-color: #F5F7FA;
   }
+
+  h4, h5{
+    color:#0097B2;
+    font-weight: bold;
+  }
