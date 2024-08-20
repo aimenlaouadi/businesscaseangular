@@ -36,177 +36,6 @@ a {
   outline: none;
 }
 
-/* Animation de rotation de la machine à laver */
-@keyframes circle {
-  from {
-    transform: rotate(0deg) rotate(-360deg);
-  }
-  to {
-    transform: rotate(0deg) rotate(360deg);
-  }
-}
-
-#door {
-  background-image: linear-gradient(top, #f4f1ee, #fff);
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, .3), inset 0px 4px 1px 1px white, inset 0px -3px 1px 1px rgba(204,198,197,.5);
-  border-radius: 50%;
-  height: 200px;
-  width: 200px;
-  position: relative;
-  border: 2px solid #ccc;
-}
-
-#inner-door {
-  background: #666;
-  border-radius: 50%;
-  height: 140px;
-  width: 140px;
-  position: relative;
-  border: 2px solid #ccc;
-  top: 28px;
-  left: 28px;
-}
-
-#drum {
-  background: #fff;
-  width: 120px;
-  height: 120px;
-  margin: 5px auto;
-  border-top: 15px solid #bbb;
-  border-left: 15px solid #bbb;
-  border-right: 15px solid transparent;
-  border-bottom: 15px solid #bbb;
-  border-radius: 50%;
-  box-shadow: 0 0 5px 1px #aaa;
-  animation: circle 3s infinite linear;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin: -60px 0 0 -60px;
-}
-
-.handle:after {
-  content: '‹ ›';
-  text-align: center;
-  font-size: 24px;
-  line-height: 26px;
-  display: block;
-  position: absolute;
-  width: 30px;
-  height: 30px;
-  border-radius: 100%;
-  top: 50%;
-  left: 102%;
-  font-weight: 700;
-  margin: -15px 0 0 -15px;
-  background: #fff;
-  box-shadow: 0px 1px 1px #222, inset 0px 1px 1px white;
-}
-
-.arc {
-  overflow: hidden;
-  position: absolute;
-  top: -1em;
-  right: 50%;
-  bottom: 50%;
-  left: -1em;
-  transform-origin: 100% 100%;
-  transform: rotate(165deg) skewX(60deg);
-}
-
-.arc:before {
-  box-sizing: border-box;
-  display: block;
-  border: solid 1.3em #777;
-  width: 225%;
-  height: 210%;
-  border-radius: 50%;
-  transform: skewX(-60deg);
-  content: '';
-}
-
-.page {
-  height: 115px;
-  width: 115px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: #ccc;
-  border-radius: 50%;
-  overflow: hidden;
-}
-
-.percent {
-  color: #fff;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  font-weight: lighter;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.temperature, .temperature-num, .temperature-sign {
-  display: inline-block;
-  font-size: 1.5em;
-}
-
-.water {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  z-index: 5;
-  bottom: 0;
-  left: 0;
-  background: #32bafa;
-  transform: translate(0, 50%);
-}
-
-.water-inner {
-  position: absolute;
-  width: 100%;
-  height: 50%;
-  top: 0;
-  left: 0;
-  overflow: hidden;
-}
-
-.water-wave {
-  width: 200%;
-  position: absolute;
-  bottom: 100%;
-}
-
-.water-wave-back {
-  right: 0;
-  fill: #aaa;
-  animation: wave-back 1.9s infinite linear;
-}
-
-.water-wave-front {
-  left: 0;
-  fill: #32bafa;
-  margin-bottom: -1px;
-  animation: wave-front 1.2s infinite linear;
-}
-
-@keyframes wave-front {
-  100% {
-    transform: translate(-50%, 0);
-  }
-}
-
-@keyframes wave-back {
-  100% {
-    transform: translate(50%, 0);
-  }
-}
 
 /* Animation des bulles */
 @keyframes animateBubble {
@@ -315,15 +144,8 @@ a {
   width: 100%;
 }
 
-.background{
-  background-color: #0097B2;
-  color:white;
-  height: 434px;
-}
 
-
-.titre{
-
+.titre {
   justify-content: center;
   align-items: center;
   font-family: 'Shrikhand';
@@ -331,7 +153,7 @@ a {
 }
 
 .hero {
-  background: linear-gradient(rgba(70, 130, 180, 0.8), rgba(70, 130, 180, 0.8)), url('https://images.unsplash.com/photo-1545173168-9f1947eebb7f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+  background: linear-gradient(rgba(0, 151, 178, 0.8), rgba(0, 151, 178, 0.8)), url('https://images.unsplash.com/photo-1545173168-9f1947eebb7f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -341,13 +163,32 @@ a {
   color: white;
   text-align: center;
 }
+
 .hero-content {
   max-width: 800px;
   padding: 20px;
+
 }
+
 h1 {
   font-size: 3rem;
   margin-bottom: 20px;
+}
+
+p {
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+}
+
+.btn-secondary {
+  background-color: #5c5c5c; 
+  border-color: #5c5c5c;
+}
+
+.btn-secondary:hover {
+  background-color: #404040;
+  border-color: #404040;
+  
 }
 
 

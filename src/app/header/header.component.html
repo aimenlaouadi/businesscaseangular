@@ -5,7 +5,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-      <img src="/images/logo1.webp" alt="Image de mon logo repérentant des bulles avec un fer a repasser et un cyntre" width="120px">
+      <img src="/images/logo1.webp" alt="Image de mon logo repérentant des bulles avec un fer à repasser et un cintre" width="120px">
       <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" routerLink="/">Accueil</a>
@@ -33,14 +33,17 @@
         </li>
       </ul>
       <div class="d-flex" *ngIf="!isLogged()">
-        <a class="nav-link" routerLink="/connexion" class="btn btn-secondary">Se connecter</a>
+        <a class="nav-link" routerLink="/connexion" class="btn btn-secondary">
+          <img src="https://img.icons8.com/?size=30&id=IerOpHeUt2OH&format=png&color=000000"> Se connecter
+        </a>
       </div>
       <div class="d-flex" *ngIf="isLogged() else notLogged">
-        <button class="nav-link" [routerLink]="['/profiluser', user?.id]" class="btn btn-info me-2">Accéder à mon profil</button>
+        <button class="nav-link" [routerLink]="['/profiluser', user?.id]" class="btn btn-info me-2">
+          Accéder à mon profil
+        </button>
         <button type="button" class="btn btn-secondary" (click)="logout()">Se déconnecter</button>
       </div>
-      <ng-template #notLogged>
-      </ng-template>
+      <ng-template #notLogged></ng-template>
     </div>
   </div>
 </nav>

@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router'; // Importer Router pour la redirection
-import { Observable } from 'rxjs';
+import { ContactService } from '../shared/servicebusinesscase/contact/contact.service';
+import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -18,9 +17,7 @@ export class ContactComponent {
   showSuccessMessage: boolean = false;
   showErrorMessage: boolean = false;
 
-  private apiUrl = 'http://localhost:8000/api/contacts';
-
-  constructor(private fb: FormBuilder, private http: HttpClient, private router: Router) {
+  constructor(private fb: FormBuilder, private contactService: ContactService, private router: Router) {
     this.contactForm = this.fb.group({
       lastname: ['', Validators.required],
       firstname: ['', Validators.required],
@@ -31,14 +28,14 @@ export class ContactComponent {
 
   onSubmit() {
     if (this.contactForm.valid) {
-      this.sendContactData(this.contactForm.value).subscribe(
+      this.contactService.register(this.contactForm.value).subscribe(
         () => {
           this.message = 'Votre demande a bien été prise en compte, merci!';
           this.showSuccessMessage = true;
           this.showErrorMessage = false;
           setTimeout(() => {
             this.showSuccessMessage = false;
-            this.router.navigate(['/']); // Redirection vers la page d'accueil après 3 secondes
+            this.router.navigate(['/']);
           }, 3000);
         },
         error => {
@@ -47,15 +44,11 @@ export class ContactComponent {
           this.showErrorMessage = true;
           setTimeout(() => {
             this.showErrorMessage = false;
-          }, 300);
+          }, 3000);
         }
       );
     } else {
       alert('Veuillez remplir tous les champs du formulaire.');
     }
-  }
-
-  sendContactData(contactData: any): Observable<any> {
-    return this.http.post<any>(this.apiUrl, contactData);
   }
 }

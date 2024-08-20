@@ -4,6 +4,12 @@
 }
 
 
+h1{
+  color:#0097B2;
+  font-weight: bold;
+}
+
+
 .card-body{
     padding: 10px;
 }

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { User } from '../../../typescript/entites';
 
 export interface IToken {
   token: string;
@@ -12,7 +13,7 @@ export interface IToken {
 })
 export class AuthService {
   private url = 'http://localhost:8000/api';
-  private currentUser: any;
+  private currentUser: User | null = null;
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -38,8 +39,7 @@ export class AuthService {
     this.router.navigate(['connexion']);
   }
 
-  // Nouvelle méthode pour récupérer l'utilisateur connecté
-  fetchCurrentUser(): Observable<any> {
+  fetchCurrentUser(): Observable<User> {
     const token = this.getToken();
     if (!token) {
       return new Observable(observer => {
@@ -52,14 +52,14 @@ export class AuthService {
       Authorization: `Bearer ${token}`
     });
 
-    return this.http.get<any>(`${this.url}/me`, { headers });
+    return this.http.get<User>(`${this.url}/users/`, { headers });
   }
 
-  setCurrentUser(user: any): void {
+  setCurrentUser(user: User): void {
     this.currentUser = user;
   }
 
-  getCurrentUser(): any {
+  getCurrentUser(): User | null {
     return this.currentUser;
   }
 }

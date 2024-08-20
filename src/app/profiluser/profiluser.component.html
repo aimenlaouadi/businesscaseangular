@@ -1,67 +1,63 @@
-    
-    <section class="container profil">
-      <div class="row">
-        <!-- Colonne latérale gauche pour l'image de profil et le menu -->
-        <div class="col-lg-4 col-md-4  text-white text-center p-4 rounded-start bg-profil">
-          <div class="mb-4">
-            <!-- Image de profil -->
-            <img src="/images/profil.jpg" class="rounded-circle img-fluid" alt="Profile Picture" width="150px">
-            <h3 class="mt-3 text-uppercase">{{ user?.username }}</h3>
-          </div>
-          <!-- Menu de profil -->
-          <ul class="nav flex-column text-center">
-            <li class="nav-item">
-              <a class="nav-link active text-white" href="#">Profile</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-white" href="#">Order History</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-white" href="#">Preferences</a>
-            </li>
-          </ul>
-        </div>
-    
-        <!-- Colonne droite pour le formulaire de profil -->
-        <div class="col-lg-8 col-md-8 bg-white p-4 rounded-end shadow-sm">
-          <h2 class="mb-4">INFORMATION PROFIL</h2>
-    
-          <div *ngIf="showSuccessMessage" class="alert alert-success" role="alert">
-            {{ message }}
-          </div>
-          <div *ngIf="showErrorMessage" class="alert alert-danger" role="alert">
-            {{ message }}
-          </div>
-    
-          <form *ngIf="form" [formGroup]="form">
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" formControlName="username" class="form-control" id="username" required placeholder="Entrez votre Username">
-            </div>
-            <div class="form-group">
-              <label for="password">Password</label>
-              <input id="password" formControlName="password" type="text" class="form-control" required>
-          </div>
-            <div class="form-group">
-              <label for="lastname">Lastname :</label>
-              <input type="text" formControlName="lastname" class="form-control" id="lastname" placeholder="Entrez votre lastname">
-            </div>
-            <div class="form-group">
-              <label for="firstname">Firstname :</label>
-              <input type="text" formControlName="firstname" class="form-control" id="firstname" placeholder="Entrez votre firstname">
-            </div>
-            <div class="form-group">
-              <label for="telephone">Telephone :</label>
-              <input type="text" formControlName="telephone" class="form-control" id="telephone" placeholder="Entrez votre téléphone">
-            </div>
-            <div class="mt-4">
-              <button type="button" (click)="updateUser()" class="btn btn-primary me-4">Mettre à jour</button>
-              <button type="button" (click)="deleteUser()" class="btn btn-danger">Supprimer</button>
-            </div>
-          </form>
-        </div>
+<section class="container profil">
+  <div class="row">
+    <!-- Colonne latérale gauche pour l'image de profil et le menu -->
+    <div class="col-lg-4 col-md-4 text-white text-center p-4 rounded-start bg-profil">
+      <div class="mb-4">
+        <!-- Image de profil -->
+        <img src="/images/profil.jpg" class="rounded-circle img-fluid" alt="Profile Picture" width="150px">
+        <h3 class="mt-3 text-uppercase">{{ user?.username }}</h3>
       </div>
-    </section>
-  
+      <!-- Menu de profil -->
+      <ul class="nav flex-column text-center">
+        <li class="nav-item">
+          <a class="nav-link active text-white" href="#">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="#">Order History</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="#">Preferences</a>
+        </li>
+      </ul>
+    </div>
 
+    <!-- Colonne droite pour le formulaire de profil -->
+    <div class="col-lg-8 col-md-8 bg-white p-4 rounded-end shadow-sm">
+      <h2 class="mb-4">INFORMATION PROFIL</h2>
 
+      <div *ngIf="showSuccessMessage" class="alert alert-success" role="alert">
+        {{ message }}
+      </div>
+      <div *ngIf="showErrorMessage" class="alert alert-danger" role="alert">
+        {{ message }}
+      </div>
+
+      <form *ngIf="form" [formGroup]="form">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" formControlName="username" class="form-control" id="username" required placeholder="Entrez votre Username">
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input id="password" formControlName="password" type="password" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="lastname">Lastname :</label>
+          <input type="text" formControlName="lastname" class="form-control" id="lastname" placeholder="Entrez votre lastname">
+        </div>
+        <div class="form-group">
+          <label for="firstname">Firstname :</label>
+          <input type="text" formControlName="firstname" class="form-control" id="firstname" placeholder="Entrez votre firstname">
+        </div>
+        <div class="form-group">
+          <label for="telephone">Telephone :</label>
+          <input type="text" formControlName="telephone" class="form-control" id="telephone" placeholder="Entrez votre téléphone">
+        </div>
+        <div class="mt-4">
+          <button type="button" (click)="updateUser()" class="btn btn-primary me-4">Mettre à jour</button>
+          <button type="button" (click)="deleteUser()" class="btn btn-danger">Supprimer</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

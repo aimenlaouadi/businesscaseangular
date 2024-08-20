@@ -1,10 +1,9 @@
-import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ReactiveFormsModule, FormControl, Validators, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ProfiluserService } from '../shared/servicebusinesscase/profiluserservice/profiluser.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../shared/servicebusinesscase/authentification/authservice.service';
-import { User } from '../typescript/entites';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-profiluser',
@@ -15,31 +14,42 @@ import { User } from '../typescript/entites';
 })
 export class ProfiluserComponent implements OnInit {
   user: any = {};
-  form: FormGroup = new FormGroup({});
+  form: FormGroup;
   message: string = '';
   showSuccessMessage: boolean = false;
   showErrorMessage: boolean = false;
 
   constructor(
+    private fb: FormBuilder,
     private profiluserService: ProfiluserService,
     private route: ActivatedRoute,
     private router: Router,
     private authService: AuthService
-  ) {}
+  ) {
+    // Initialisez le formulaire ici
+    this.form = this.fb.group({
+      username: ['', Validators.required],
+      lastname: ['', Validators.required],
+      firstname: ['', Validators.required],
+      telephone: ['', Validators.required],
+      password: ['', Validators.required]
+    });
+  }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      const userId = +params['id']; // assurez-vous que l'ID est un nombre
+      const userId = +params['id']; 
       if (!isNaN(userId)) {
         this.profiluserService.getUser(userId).subscribe(
           user => {
             this.user = user;
-            this.form = new FormGroup({
-              username: new FormControl(this.user.username, [Validators.required]),
-              lastname: new FormControl(this.user.lastname, [Validators.required]),
-              firstname: new FormControl(this.user.firstname, [Validators.required]),
-              telephone: new FormControl(this.user.telephone, [Validators.required]),
-              password: new FormControl(this.user.password, [Validators.required]),
+            
+            this.form.patchValue({
+              username: this.user.username,
+              lastname: this.user.lastname,
+              firstname: this.user.firstname,
+              telephone: this.user.telephone,
+              password: this.user.password, 
             });
           },
           error => {
@@ -57,20 +67,11 @@ export class ProfiluserComponent implements OnInit {
 
   updateUser(): void {
     if (this.form.valid) {
-      const updatedUser: User = {
-        id: this.user.id,
-        username: this.form.get('username')?.value,
-        lastname: this.form.get('lastname')?.value,
-        firstname: this.form.get('firstname')?.value,
-        telephone: this.form.get('telephone')?.value,
-        password: this.form.get('password')?.value,
-      };
-  
-      console.log('Données à envoyer pour la mise à jour :', updatedUser); // Vérification des données
-      
+      const updatedUser = this.form.value;
+      updatedUser.id = this.user.id;
+
       this.profiluserService.updateUser(updatedUser.id, updatedUser).subscribe(
-        (response) => {
-          console.log(response);
+        response => {
           this.message = 'Votre profil a été mis à jour avec succès!';
           this.showSuccessMessage = true;
           this.showErrorMessage = false;
@@ -84,10 +85,8 @@ export class ProfiluserComponent implements OnInit {
           this.showErrorMessage = true;
         }
       );
-    
     }
   }
-  
 
   deleteUser(): void {
     this.profiluserService.deleteUser(this.user.id).subscribe(

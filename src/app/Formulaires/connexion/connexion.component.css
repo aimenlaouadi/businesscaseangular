@@ -350,3 +350,14 @@ a {
   background: #0097B2;
 }
 
+h2{
+  font-weight: bold;
+}
+
+.lien{
+  margin-left: 10px;
+  font-size: small;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
