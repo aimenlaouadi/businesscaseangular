@@ -3,6 +3,7 @@
     <div class="row">
       <h5>Mes Services</h5>
 
+      <!-- Affichage des services disponibles -->
       <div class="col-lg-6" *ngFor="let service of services">
         <div class="mb-4">
           <h2>{{ service.service_type }}</h2>
@@ -13,6 +14,7 @@
       </div>
     </div>
 
+    <!-- Affichage des services sélectionnés -->
     <div class="row mt-5" *ngIf="selectedServices.length > 0">
       <div class="col-lg-12">
         <h2>Votre Commande</h2>
@@ -28,32 +30,36 @@
                 <p>Prix Unitaire : {{ service.service_price }} €</p>
 
                 <!-- Affichage des produits associés -->
-                <div *ngFor="let serviceProduct of service.serviceProducts">
-                  <div *ngIf="serviceProduct.product">
-                    <h4>Produit associé : {{ serviceProduct.product.product_name }}</h4>
-                    <p>Description : {{ serviceProduct.product.product_description }}</p>
-                  </div>
-                    <!-- Affichage des items et des quantités -->
-                    <div *ngFor="let item of serviceProduct.items">
-                      <p>Prix : {{ item.price }} €</p>
-                      <div class="quantity-control">
-                        <button (click)="decreaseItemQuantity(item)" class="btn btn-secondary">-</button>
-                        <span class="mx-2">{{ item.quantite }}</span>
-                        <button (click)="increaseItemQuantity(item)" class="btn btn-secondary">+</button>
+                <div *ngIf="productsMap[service.id] && productsMap[service.id].length > 0">
+                  <h4>Produits associés :</h4>
+                  <ul>
+                    <li *ngFor="let product of productsMap[service.id]">
+                      {{ product.product_name }} - {{ product.price }} €
+                      <!-- Trouver l'item correspondant au produit -->
+                      <div *ngFor="let item of items">
+                        <ng-container *ngIf="item.product.id === product.id">
+                          <button (click)="increaseItemQuantity(item)">+</button>
+                          <button (click)="decreaseItemQuantity(item)">-</button>
+                          <span>Quantité : {{ item.quantite }}</span>
+                        </ng-container>
                       </div>
-                      <p>Total pour cet item : {{ item.quantite * item.price }} €</p>
-                    </div>
-                  </div>
+                    </li>
+                  </ul>
+                </div>
+                <div *ngIf="!productsMap[service.id] || productsMap[service.id].length === 0">
+                  <p>Aucun produit associé à ce service.</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
+        <!-- Affichage du total général -->
         <div class="total mt-4">
-          <h3>Total général : {{ getTotal() }} €</h3>
-          <button class="btn btn-success">Ajouter au Panier</button>
+          <h3>Total général : {{ calculateTotal() }} €</h3>
+          <button class="btn btn-success" (click)="addToCart()">Ajouter au Panier</button>
         </div>
       </div>
     </div>
+  </div>
 </section>

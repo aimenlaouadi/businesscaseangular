@@ -10,24 +10,21 @@
   }
 
 
-export interface Product {
-  id: number;
-  product_name: string;
-  product_description: string;
-}
+  export interface Product {
+    id: number;
+    product_name: string;
+    product_description: string;
+    price: number; 
+  }
+  
 
 export interface Item {
   id: number;
   price: number;
   quantite: number;
+  product: Product;
 }
 
-export interface ServiceProduct {
-  id: number;
-  coef: number;
-  product: Product;
-  items: Item[];
-}
 
 export interface Service {
   id: number;
@@ -35,7 +32,7 @@ export interface Service {
   service_price: number;
   description: string;
   images: string;
-  serviceProducts: ServiceProduct[];
+  products:string[];
 }
 
 export interface HydraCollection<T> {

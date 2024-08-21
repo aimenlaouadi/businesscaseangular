@@ -21,4 +21,7 @@ export class OrderService {
   getProducts(): Observable<HydraCollection<Product>> {
     return this.http.get<HydraCollection<Product>>(`${this.apiUrl}/products`);
 }
+getProductByUri(uri: string): Observable<Product> {
+  return this.http.get<Product>("http://localhost:8000"+uri);
+}
 }

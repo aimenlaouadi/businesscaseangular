@@ -32,7 +32,6 @@ export class ProfiluserComponent implements OnInit {
       lastname: ['', Validators.required],
       firstname: ['', Validators.required],
       telephone: ['', Validators.required],
-      password: ['', Validators.required]
     });
   }
 
