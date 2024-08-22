@@ -19,7 +19,7 @@
   
 
 export interface Item {
-  id: number;
+  id?: number;
   price: number;
   quantite: number;
   product: Product;

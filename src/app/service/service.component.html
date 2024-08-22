@@ -32,19 +32,18 @@
                 <!-- Affichage des produits associés -->
                 <div *ngIf="productsMap[service.id] && productsMap[service.id].length > 0">
                   <h4>Produits associés :</h4>
-                  <ul>
-                    <li *ngFor="let product of productsMap[service.id]">
-                      {{ product.product_name }} - {{ product.price }} €
-                      <!-- Trouver l'item correspondant au produit -->
-                      <div *ngFor="let item of items">
-                        <ng-container *ngIf="item.product.id === product.id">
-                          <button (click)="increaseItemQuantity(item)">+</button>
-                          <button (click)="decreaseItemQuantity(item)">-</button>
-                          <span>Quantité : {{ item.quantite }}</span>
-                        </ng-container>
+                  <div class="d-flex overflow-auto">
+                    <div class="card flex-shrink-0 me-3" style="width: 18rem;" *ngFor="let product of productsMap[service.id]">
+                      <img class="card-img-top" src="https://via.placeholder.com/150" alt="Image du produit">
+                      <div class="card-body">
+                        <h5 class="card-title">{{ product.product_name }}</h5>
+                        <div class="border-titlecard"></div>
+                        <p class="card-text">{{ product.product_description }}</p>
+                        <p class="card-text"><strong>{{ product.price }} €</strong></p>
+                        <button (click)="addToCart(product)" class="btn btn-success">Ajouter au panier</button>
                       </div>
-                    </li>
-                  </ul>
+                    </div>
+                  </div>
                 </div>
                 <div *ngIf="!productsMap[service.id] || productsMap[service.id].length === 0">
                   <p>Aucun produit associé à ce service.</p>
@@ -54,12 +53,33 @@
           </div>
         </div>
 
-        <!-- Affichage du total général -->
+        <!-- Affichage du panier -->
         <div class="total mt-4">
-          <h3>Total général : {{ calculateTotal() }} €</h3>
-          <button class="btn btn-success" (click)="addToCart()">Ajouter au Panier</button>
+          <ng-template #emptyCart>
+            <p>Votre panier est vide.</p>
+          </ng-template>
         </div>
       </div>
+    </div>
+    <h3>Panier</h3>
+    <div *ngIf="items.length > 0;">
+      <ul class="list-group mb-3">
+        <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let item of items">
+          <div>
+            <h5>{{ item.product.product_name }}</h5>
+            <p>Prix : {{ item.price }} €</p>
+          </div>
+          <div class="d-flex align-items-center">
+            <button class="btn btn-outline-primary me-2" (click)="decreaseItemQuantity(item)">-</button>
+            <span class="me-2">Quantité : {{ item.quantite }}</span>
+            <button class="btn btn-outline-primary me-2" (click)="increaseItemQuantity(item)">+</button>
+            <button class="btn btn-outline-danger" (click)="removeFromCart(item)">Supprimer</button>
+          </div>
+        </li>
+      </ul>
+      <h4>Total général : {{ calculateTotal() }} €</h4>
+      <button class="btn btn-danger mt-3 me-2" (click)="clearCart()">Vider le panier</button>
+      <button class="btn btn-success mt-3" (click)="clearCart()">Ajouter aux Panier</button>
     </div>
   </div>
 </section>
