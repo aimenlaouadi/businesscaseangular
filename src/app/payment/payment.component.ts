@@ -1,28 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { LocalstorageService } from '../shared/servicebusinesscase/localstorage/localstorage.service';
 import { Item } from '../typescript/entites';
-import { NgFor, NgIf } from '@angular/common';
+import { NgClass, NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-payment',
   standalone: true,
-  imports: [NgFor, ReactiveFormsModule, NgIf],
+  imports: [NgFor, ReactiveFormsModule, NgIf, NgClass],
   templateUrl: './payment.component.html',
   styleUrls: ['./payment.component.css']
 })
 export class PaymentComponent implements OnInit {
   items: Item[] = [];
   totalAmount: number = 0;
-
-  // Le formulaire de paiement
   paymentForm!: FormGroup;
+  paymentSuccess: boolean = false; // Pour gérer l'affichage de la modal
 
   constructor(
-    private fb: FormBuilder,  // Injecter FormBuilder
-    private localstorageService: LocalstorageService,
-    private router: Router
+    private fb: FormBuilder,
+    private localstorageService: LocalstorageService
   ) {}
 
   ngOnInit(): void {
@@ -38,20 +35,27 @@ export class PaymentComponent implements OnInit {
     });
   }
 
-  // Calculer le total des articles dans le panier
   calculateTotal(): number {
     return this.items.reduce((total, item) => total + item.price * item.quantite, 0);
   }
 
-  // Méthode pour valider le paiement
   validatePayment(): void {
     if (this.paymentForm.valid) {
       console.log('Paiement validé avec succès', this.paymentForm.value);
-      
-      this.localstorageService.clearItems(); // Vider le panier après paiement
-      this.router.navigate(['/confirmation']); // Rediriger vers une page de confirmation (à configurer)
+
+      // Simuler la validation de paiement et vider le panier
+      this.localstorageService.clearItems();
+
+      // Déclencher l'affichage de la modal
+      this.paymentSuccess = true;
     } else {
       console.log('Formulaire de paiement non valide');
+      this.paymentForm.markAllAsTouched();
     }
+  }
+
+  // Méthode pour fermer la modal de succès
+  closeModal(): void {
+    this.paymentSuccess = false;
   }
 }
