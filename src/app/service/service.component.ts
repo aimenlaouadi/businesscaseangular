@@ -3,6 +3,7 @@ import { LocalstorageService } from '../shared/servicebusinesscase/localstorage/
 import { Service, Product, Item } from '../typescript/entites';
 import { NgClass, NgFor, NgIf } from '@angular/common';
 import { OrderService } from '../shared/servicebusinesscase/order/order.service';
+import { Router } from '@angular/router'; 
 
 @Component({
   selector: 'app-service',
@@ -18,7 +19,7 @@ export class ServiceComponent implements OnInit {
   activeAccordionIndex: number | null = null;
   productsMap: { [key: string]: Product[] } = {}; // Map pour stocker les produits par service
 
-  constructor(private localstorageService: LocalstorageService, private orderService: OrderService) {}
+  constructor(private localstorageService: LocalstorageService, private orderService: OrderService, private router: Router) {}
 
   ngOnInit(): void {
     this.loadServices();
@@ -115,5 +116,9 @@ export class ServiceComponent implements OnInit {
   clearCart(): void {
     this.localstorageService.clearItems();
     this.items = [];
+  }
+
+  goToCart(): void {
+    this.router.navigate(['/panier']);  // Rediriger vers la page panier
   }
 }
