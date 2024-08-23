@@ -119,6 +119,6 @@ export class ServiceComponent implements OnInit {
   }
 
   goToCart(): void {
-    this.router.navigate(['/panier']);  // Rediriger vers la page panier
+    this.router.navigate(['/panier']); 
   }
 }

@@ -10,6 +10,7 @@ import { HomeComponent } from './Page acceuil/home/home.component';
 import { InscriptionComponent } from './Formulaires/inscription/inscription.component';
 import { ConnexionComponent } from './Formulaires/connexion/connexion.component';
 import { ProfiluserComponent } from './profiluser/profiluser.component';
+import { PaymentComponent } from './payment/payment.component';
 
 export const routes: Routes = [
     {path:'' , component:HomeComponent},
@@ -19,7 +20,8 @@ export const routes: Routes = [
     {path:'contact' , component:ContactComponent},
     {path:'dashboard' , component:DashboardComponent},
     {path:'apropos' , component:AproposComponent},
-    {path:'panier' , component:PanierComponent, canActivate: [authGuard] },
+    {path:'panier' , component:PanierComponent},
+    {path:'payment' , component:PaymentComponent, canActivate: [authGuard] },
     {path:'profiluser/:id', component:ProfiluserComponent, canActivate: [authGuard] },
     {path: '**', component:Error404Component}
 ]
