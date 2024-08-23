@@ -23,7 +23,7 @@ export class ConnexionComponent implements OnInit {
     this.loginForm = new FormGroup({
       credentials: new FormGroup({
         username: new FormControl('', [Validators.required, Validators.minLength(3)]),
-        password: new FormControl('', [Validators.required, Validators.minLength(2)])
+        password: new FormControl('', [Validators.required, Validators.minLength(3)])
       })
     });
   }

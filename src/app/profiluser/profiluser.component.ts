@@ -76,6 +76,7 @@ export class ProfiluserComponent implements OnInit {
           this.showErrorMessage = false;
           setTimeout(() => {
             this.showSuccessMessage = false;
+            this.router.navigateByUrl('/connexion');
           }, 1000);
         },
         error => {

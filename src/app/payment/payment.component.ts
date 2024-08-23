@@ -30,7 +30,7 @@ export class PaymentComponent implements OnInit {
     this.paymentForm = this.fb.group({
       cardNumber: ['', [Validators.required, Validators.pattern('^[0-9]{16}$')]],
       cardHolder: ['', [Validators.required]],
-      expirationDate: ['', [Validators.required, Validators.pattern('^(0[1-9]|1[0-2])\/([0-9]{2})$')]], // Format MM/YY
+      expirationDate: ['', [Validators.required, Validators.pattern('^(0[1-9]|1[0-2])\/([0-9]{4})$')]], // Format MM/YY
       cvc: ['', [Validators.required, Validators.pattern('^[0-9]{3}$')]]
     });
   }

@@ -323,20 +323,17 @@ a {
   background-size: cover;
   height: 800px;
   width: 100%;
-  filter: opacity(65%);
 }
 
-.form-margin{
+.form-margin {
   padding: 40px;
-  margin-top: 150px;
-  background:#0097B2;
+  background: #0097B2;
   color: white;
   font-weight: bold;
-  width: 40%;
-  filter: opacity(100%);
-  border: lightgray solid 3px;
+  border: 3px solid lightgray;
   border-radius: 20px;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+  margin-top: 100px;
 }
 
 .btn{
@@ -361,3 +358,21 @@ h2{
   color: white;
   font-weight: bold;
 }
+
+.button {
+  background: #0097B2;
+  font-weight: bold;
+  color: #fff;
+  border: 2px solid #fff;
+  padding: 5px;
+  margin-top: 15px;
+}
+
+.button:hover {
+  background: #fff;
+  color: #0097B2;
+  border-color: #0097B2;
+  transform: scale(1.05);
+  box-shadow: 0 8px 15px rgba(0, 151, 178, 0.3);
+}
+
