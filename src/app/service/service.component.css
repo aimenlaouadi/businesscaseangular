@@ -52,3 +52,36 @@ p {
   margin-right: 5px;
 }
 
+.card-service {
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-service:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card-service img {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.card-text {
+  font-size: 1rem;
+  color: #6c757d;
+}
+
+.btn {
+  padding: 10px;
+}

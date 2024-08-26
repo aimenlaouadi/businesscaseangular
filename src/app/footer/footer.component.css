@@ -26,3 +26,13 @@
     color:#0097B2;
     font-weight: bold;
   }
+
+  .col-lg-3 img {
+    transition: transform 0.3s ease;
+  }
+  
+  .col-lg-3 img:hover {
+    transform: scale(1.5);
+  }
+  
+  

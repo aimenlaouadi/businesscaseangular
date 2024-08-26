@@ -1,85 +1,90 @@
 <section class="couleurtop">
   <div class="container">
     <div class="row">
-      <h5>Mes Services</h5>
+      <h1 class="text-center mb-4">Mes Services</h1>
 
       <!-- Affichage des services disponibles -->
-      <div class="col-lg-6" *ngFor="let service of services">
-        <div class="mb-4">
-          <h2>{{ service.service_type }}</h2>
-          <p>{{ service.description }}</p>
-          <img [src]="service.images" width="400px" alt="Image de {{ service.service_type }}"><br>
-          <button (click)="selectService(service)" class="btn btn-primary mt-3">Sélectionner ce service</button>
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12" *ngFor="let service of services">
+          <div class="card card-service shadow-sm mb-4">
+            <img [src]="service.images" class="card-img-top" alt="Image de {{ service.service_type }}">
+            <div class="card-body">
+              <h5 class="card-title">{{ service.service_type }}</h5>
+              <p class="card-text">{{ service.description }}</p>
+              <button (click)="selectService(service)" class="btn btn-primary">Sélectionner ce service</button>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Affichage des services sélectionnés -->
-    <div class="row mt-5" *ngIf="selectedServices.length > 0">
-      <div class="col-lg-12">
-        <h2>Votre Commande</h2>
-        <div class="accordion" id="selectedServiceAccordion">
-          <div class="accordion-item" *ngFor="let service of selectedServices; let i = index">
-            <h2 class="accordion-header">
-              <button class="accordion-button" type="button" (click)="toggleAccordion(i)">
-                Votre Service Sélectionné : {{ service.service_type }}
-              </button>
-            </h2>
-            <div [ngClass]="{'show': activeAccordionIndex === i}" class="accordion-collapse collapse">
-              <div class="accordion-body">
-                <p>Prix Unitaire : {{ service.service_price }} €</p>
+      <!-- Affichage des services sélectionnés -->
+      <div class="row mt-5" *ngIf="selectedServices.length > 0">
+        <div class="col-lg-12">
+          <h2>Votre Commande</h2>
+          <div class="accordion" id="selectedServiceAccordion">
+            <div class="accordion-item" *ngFor="let service of selectedServices; let i = index">
+              <h2 class="accordion-header">
+                <button class="accordion-button" type="button" (click)="toggleAccordion(i)">
+                  Votre Service Sélectionné : {{ service.service_type }}
+                </button>
+              </h2>
+              <div [ngClass]="{'show': activeAccordionIndex === i}" class="accordion-collapse collapse">
+                <div class="accordion-body">
+                  <p>Prix Unitaire : {{ service.service_price }} €</p>
 
-                <!-- Affichage des produits associés -->
-                <div *ngIf="productsMap[service.id] && productsMap[service.id].length > 0">
-                  <h4>Produits associés :</h4>
-                  <div class="d-flex overflow-auto">
-                    <div class="card flex-shrink-0 me-3" style="width: 18rem;" *ngFor="let product of productsMap[service.id]">
-                      <img class="card-img-top" src="https://via.placeholder.com/150" alt="Image du produit">
-                      <div class="card-body">
-                        <h5 class="card-title">{{ product.product_name }}</h5>
-                        <div class="border-titlecard"></div>
-                        <p class="card-text">{{ product.product_description }}</p>
-                        <p class="card-text"><strong>{{ product.price }} €</strong></p>
-                        <button (click)="addToCart(product)" class="btn btn-success">Ajouter au panier</button>
+                  <!-- Affichage des produits associés -->
+                  <div *ngIf="productsMap[service.id] && productsMap[service.id].length > 0">
+                    <h4>Produits associés :</h4>
+                    <div class="d-flex overflow-auto">
+                      <div class="card flex-shrink-0 me-3" style="width: 18rem;" *ngFor="let product of productsMap[service.id]">
+                        <img class="card-img-top" src="https://via.placeholder.com/150" alt="Image du produit">
+                        <div class="card-body">
+                          <h5 class="card-title">{{ product.product_name }}</h5>
+                          <div class="border-titlecard"></div>
+                          <p class="card-text">{{ product.product_description }}</p>
+                          <p class="card-text"><strong>{{ product.price }} €</strong></p>
+                          <button (click)="addToCart(product)" class="btn btn-success">Ajouter au panier</button>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div *ngIf="!productsMap[service.id] || productsMap[service.id].length === 0">
-                  <p>Aucun produit associé à ce service.</p>
+                  <div *ngIf="!productsMap[service.id] || productsMap[service.id].length === 0">
+                    <p>Aucun produit associé à ce service.</p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <!-- Affichage du panier -->
-        <div class="total mt-4">
-          <ng-template #emptyCart>
-            <p>Votre panier est vide.</p>
-          </ng-template>
+          <!-- Affichage du panier -->
+          <div class="total mt-4">
+            <ng-template #emptyCart>
+              <p>Votre panier est vide.</p>
+            </ng-template>
+          </div>
+
+          <h3>Panier</h3>
+          <div *ngIf="items.length > 0">
+            <ul class="list-group mb-3">
+              <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let item of items">
+                <div>
+                  <h5>{{ item.product.product_name }}</h5>
+                  <p>Prix : {{ item.price }} €</p>
+                </div>
+                <div class="d-flex align-items-center">
+                  <button class="btn btn-outline-primary me-2" (click)="decreaseItemQuantity(item)">-</button>
+                  <span class="me-3">Quantité : {{ item.quantite }}</span>
+                  <button class="btn btn-outline-primary me-2" (click)="increaseItemQuantity(item)">+</button>
+                  <button class="btn btn-outline-danger" (click)="removeFromCart(item)">Supprimer</button>
+                </div>
+              </li>
+            </ul>
+            <h4>Total général : {{ calculateTotal() }} €</h4>
+            <button class="btn btn-danger mt-3 me-2" (click)="clearCart()">Vider le panier</button>
+            <button class="btn btn-success mt-3" (click)="goToCart()">Ajouter aux Panier</button>
+          </div>
         </div>
       </div>
-    </div>
-    <h3>Panier</h3>
-    <div *ngIf="items.length > 0;">
-      <ul class="list-group mb-3">
-        <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let item of items">
-          <div>
-            <h5>{{ item.product.product_name }}</h5>
-            <p>Prix : {{ item.price }} €</p>
-          </div>
-          <div class="d-flex align-items-center">
-            <button class="btn btn-outline-primary me-2" (click)="decreaseItemQuantity(item)">-</button>
-            <span class="me-2">Quantité : {{ item.quantite }}</span>
-            <button class="btn btn-outline-primary me-2" (click)="increaseItemQuantity(item)">+</button>
-            <button class="btn btn-outline-danger" (click)="removeFromCart(item)">Supprimer</button>
-          </div>
-        </li>
-      </ul>
-      <h4>Total général : {{ calculateTotal() }} €</h4>
-      <button class="btn btn-danger mt-3 me-2" (click)="clearCart()">Vider le panier</button>
-      <button class="btn btn-success mt-3" (click)="goToCart()">Ajouter aux Panier</button>
     </div>
   </div>
 </section>
