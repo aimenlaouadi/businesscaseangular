@@ -1,65 +1,82 @@
-<section class=" avisclients">
+<section class="avisclients mt-5">
     <div class="container">
-        <div class="row align-items-center mt-5 mb-5 text-center">
-              <div class="mb-5">
-                <h2>Ils aiment notre service</h2>
-  
-                <h3>Vous allez l'adorer !</h3> 
-              </div>  
-         
-              <div class="d-flex justify-content-center gap-3 mt-4">
-                <div class="col-lg-4 col-md-6 col-sm-10 mb-4 shadow p-3 bg-body-tertiary rounded d-flex flex-column">
-                    <div class="mt-4 mb-4 text-center flex-grow-1">
-                        <div class="review-header">
-                            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Avatar de Thomas Dubois" class="review-avatar rounded-circle">
-                            <span><h3 class="review-name">Thomas Dubois</h3></span>
-                        </div>
-                        <div class="review-rating">
-                            <span class="star">★</span>
-                            <span class="star">★</span>
-                            <span class="star">★</span>
-                            <span class="star">★</span>
-                            <span class="star">☆</span>
-                        </div>
-                        <p class="review-content">J'utilise Bubble Pressing depuis plusieurs mois maintenant et je suis très satisfait. Mes chemises sont toujours parfaitement repassées et les délais sont respectés. Le seul petit bémol est le prix un peu élevé, mais la qualité est au rendez-vous.</p>
-                    </div>
-                    <p class="review-date">3 juin 2023</p>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-10 mb-4 shadow p-3 bg-body-tertiary rounded d-flex flex-column">
-                    <div class="mt-4 mb-4 text-center flex-grow-1">
-                        <div class="review-header">
-                            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Avatar de Sophie Martin" class="review-avatar rounded-circle">
-                            <h3 class="review-name">Sophie Martin</h3>
-                        </div>
-                        <div class="review-rating">
-                            <span class="star">★</span>
-                            <span class="star">★</span>
-                            <span class="star">★</span>
-                            <span class="star">★</span>
-                            <span class="star">★</span>
-                        </div>
-                        <p class="review-content">Bubble Pressing est tout simplement formidable ! J'ai confié mes vêtements les plus délicats et ils sont revenus impeccables. Le service est rapide et le personnel très professionnel. Je recommande vivement !</p>
-                    </div>
-                    <p class="review-date">15 mai 2023</p>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-10 mb-4 shadow p-3 bg-body-tertiary rounded d-flex flex-column">
-                    <div class="mt-4 mb-4 text-center flex-grow-1">
-                        <div class="review-header">
-                            <img src="https://randomuser.me/api/portraits/women/89.jpg" alt="Avatar de Léa Petit" class="review-avatar rounded-circle">
-                            <h3 class="review-name">Léa Petit</h3>
-                        </div>
-                        <div class="review-rating">
-                            <span class="star">★</span>
-                            <span class="star">★</span>
-                            <span class="star">★</span>
-                            <span class="star">★</span>
-                            <span class="star">★</span>
-                        </div>
-                        <p class="review-content">Bubble Pressing a sauvé ma robe de mariée ! Après un incident avec du vin rouge, j'étais désespérée. Leur équipe a fait des merveilles et ma robe était comme neuve pour le grand jour. Un grand merci pour leur expertise et leur gentillesse !</p>
-                    </div>
-                    <p class="review-date">20 juin 2023</p>
-                </div>
-              </div>
+      <div class="row">
+        <div class="col-12 text-center mb-4">
+          <h2>Ils aiment notre service</h2>
+          <h3>Vous allez l'adorer !</h3>
         </div>
+      </div>
+      <!-- Ajoutez data-bs-interval pour définir la vitesse du défilement -->
+      <div id="avisCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="d-flex justify-content-center">
+              <div class="col-lg-4 col-md-6 col-sm-12 shadow p-3 bg-body-tertiary rounded d-flex flex-column text-center">
+                <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Avatar de Thomas Dubois" class="review-avatar rounded-circle mx-auto">
+                <h3 class="review-name">Thomas Dubois</h3>
+                <div class="review-rating">
+                  <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">☆</span>
+                </div>
+                <p class="review-content">J'utilise Bubble Pressing depuis plusieurs mois maintenant et je suis très satisfait. Mes chemises sont toujours parfaitement repassées et les délais sont respectés.</p>
+                <p class="review-date">3 juin 2023</p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="d-flex justify-content-center">
+              <div class="col-lg-4 col-md-6 col-sm-12 shadow p-3 bg-body-tertiary rounded d-flex flex-column text-center">
+                <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Avatar de Sophie Martin" class="review-avatar rounded-circle mx-auto">
+                <h3 class="review-name">Sophie Martin</h3>
+                <div class="review-rating">
+                  <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+                </div>
+                <p class="review-content">Bubble Pressing est tout simplement formidable ! J'ai confié mes vêtements les plus délicats et ils sont revenus impeccables.</p>
+                <p class="review-date">15 mai 2023</p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="d-flex justify-content-center">
+              <div class="col-lg-4 col-md-6 col-sm-12 shadow p-3 bg-body-tertiary rounded d-flex flex-column text-center">
+                <img src="https://randomuser.me/api/portraits/women/89.jpg" alt="Avatar de Léa Petit" class="review-avatar rounded-circle mx-auto">
+                <h3 class="review-name">Léa Petit</h3>
+                <div class="review-rating">
+                  <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+                </div>
+                <p class="review-content">Bubble Pressing a sauvé ma robe de mariée ! Leur équipe a fait des merveilles et ma robe était comme neuve pour le grand jour.</p>
+                <p class="review-date">20 juin 2023</p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="d-flex justify-content-center">
+              <div class="col-lg-4 col-md-6 col-sm-12 shadow p-3 bg-body-tertiary rounded d-flex flex-column text-center">
+                <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Avatar de Paul Dupont" class="review-avatar rounded-circle mx-auto">
+                <h3 class="review-name">Paul Dupont</h3>
+                <div class="review-rating">
+                  <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+                </div>
+                <p class="review-content">Un service irréprochable, rapide et de qualité. Je recommande Bubble Pressing à tous mes amis et collègues.</p>
+                <p class="review-date">1 juillet 2023</p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="d-flex justify-content-center">
+              <div class="col-lg-4 col-md-6 col-sm-12 shadow p-3 bg-body-tertiary rounded d-flex flex-column text-center">
+                <img src="https://randomuser.me/api/portraits/men/56.jpg" alt="Avatar de Marc Lemoine" class="review-avatar rounded-circle mx-auto">
+                <h3 class="review-name">Marc Lemoine</h3>
+                <div class="review-rating">
+                  <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">☆</span>
+                </div>
+                <p class="review-content">Le service est bon, mais je pense qu'il pourrait être amélioré. Cependant, c'est toujours mieux que ce que j'ai utilisé auparavant.</p>
+                <p class="review-date">25 juin 2023</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
   </section>
+  

@@ -20,12 +20,12 @@ h1{
 
   @media (max-width: 992px) {
     .commentcamarche .col-md-3 {
-      flex: 1 0 46%; /* Adjust width for medium screens */
+      flex: 1 0 46%; 
     }
   }
 
   @media (max-width: 576px) {
     .commentcamarche .col-md-3 {
-      flex: 1 0 100%; /* Full width for small screens */
+      flex: 1 0 100%;
     }
   }

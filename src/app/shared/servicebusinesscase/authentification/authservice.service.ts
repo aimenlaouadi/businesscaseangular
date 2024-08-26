@@ -59,7 +59,7 @@ export class AuthService {
     this.currentUser = user;
   }
 
-  getCurrentUser(): User | null {
+  getCurrentUser(user: User): User | null {
     return this.currentUser;
   }
 }

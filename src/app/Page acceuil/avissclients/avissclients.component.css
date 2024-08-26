@@ -1,21 +1,50 @@
-h2, h3{
-    text-align: center;
-    font-weight: bold;
-    color:#0097B2;
-
+h2, h3 {
+  text-align: center;
+  font-weight: bold;
+  color: #0097B2;
 }
 
-p{
-    text-align: justify;
-    color: #002f87;
-    text-align: justify;
+.avisclients .review-avatar {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 15px;
 }
 
-.border{
-  padding: 20px;
+.avisclients .review-name {
+  font-weight: bold;
+  color: #0097B2;
+  margin-top: 10px;
+}
+
+.avisclients .review-rating {
+  color: #ffc107;
+  margin: 10px 0;
+}
+
+.avisclients .review-content {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #002f87;
+}
+
+.avisclients .review-date {
+  color: #777;
+  font-size: 0.85rem;
+  margin-top: auto;
 }
 
 .avisclients{
-  margin-top: 150px;
+  margin-top:100px;
   margin-bottom: 150px;
+}
+
+/* Control buttons styling */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: #0097B2;
+  border-radius: 50%;
+}
+
+.carousel-inner .carousel-item {
+  transition: transform 0.6s ease;
 }

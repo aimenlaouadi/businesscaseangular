@@ -1,89 +1,105 @@
+.imageservice .row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.imageservice .col-lg-4,
+.imageservice .col-md-6 {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.imageservice img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+
 .services {
-    background-color: #f5f7fa; 
-    padding: 50px 0; 
-  }
-  
-  .services h2 {
-    font-size: 2.5rem;
-    color: #002f87; 
-    margin-bottom: 30px;
-  }
-  
-  .services h3 {
-    font-size: 1.5rem;
-    color: #002f87;
+  background-color: #f5f7fa; 
+  padding: 50px 0; 
+}
+
+.services h2 {
+  font-size: 2.5rem;
+  color: #002f87; 
+  margin-bottom: 30px;
+}
+
+.services h3 {
+  font-size: 1.5rem;
+  color: #002f87;
+  margin-bottom: 15px;
+}
+
+.services p {
+  font-size: 1rem;
+  color: #00a1df; 
+  margin-bottom: 20px;
+}
+
+.background {
+  background-color: #0097B2;
+  color: white;
+}
+
+.stat-item {
+  margin: 20px 0;
+}
+
+.stat-icon {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 10px;
+}
+
+.hr {
+  width: 50px;
+  height: 2px;
+  margin: 10px auto;
+  background-color: #0097B2;
+}
+
+h2, h3 {
+  text-align: center;
+  color: #0097B2;
+  font-weight: bold;
+}
+
+.nosservices {
+  margin-top: 100px;
+}
+
+.enchiffres {
+  margin-top: 150px;
+  margin-bottom: 150px;
+}
+
+.bordertop {
+  border-top: #002f87 solid 3px;
+}
+
+@media (max-width: 768px) {
+  .services .col-md-6, .services .col-lg-3 {
     margin-bottom: 15px;
   }
-  
-  .services p {
-    font-size: 1rem;
-    color: #00a1df; 
-    margin-bottom: 20px;
-  }
-  
-  .background{
-    background-color:#0097B2;
-    color:white;
-  }
 
-  
   .stat-item {
-    margin: 20px 0;
-  }
-  
-  .stat-icon {
-    width: 50px;
-    height: 50px;
-    margin-bottom: 10px;
-  }
-  
-  
-  .hr {
-    width: 50px;
-    height: 2px;
-    margin: 10px auto;
-    background-color: #0097B2;
+    margin-bottom: 15px;
   }
 
-  h2, h3{
-    text-align: center;
-    color:#0097B2;
-    font-weight: bold;
+  .background .col-md-6, .background .col-lg-4 {
+    margin-bottom: 15px;
   }
 
-  .nosservices{
-    margin-top: 100px;
-  }
-  
-  /* Espacement pour les petites tailles d'écran */
-  @media (max-width: 768px) {
-    .services .col-md-6, .services .col-lg-3 {
-        margin-bottom: 15px;
-    }
-  
-    .stat-item {
-        margin-bottom: 15px;
-    }
-  
-    .background .col-md-6, .background .col-lg-4 {
-        margin-bottom: 15px;
-    }
-  
-    h2, h3 {
-        margin-top: 20px;
-    }
-  
-    .services .container, .background .container, .container-fluid {
-        padding-left: 15px;
-        padding-right: 15px;
-    }
+  h2, h3 {
+    margin-top: 20px;
   }
 
-  .enchiffres{
-    margin-top: 150px;
-    margin-bottom: 150px;
+  .services .container, .background .container, .container-fluid {
+    padding-left: 15px;
+    padding-right: 15px;
   }
+}
 
-  .bordertop{
-  border-top: #002f87 solid 3px;
-  }
