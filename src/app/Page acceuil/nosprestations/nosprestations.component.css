@@ -42,6 +42,7 @@
 .background {
   background-color: #0097B2;
   color: white;
+  padding: 10px;
 }
 
 .stat-item {
