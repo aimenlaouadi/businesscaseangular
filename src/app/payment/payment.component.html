@@ -40,7 +40,8 @@
         <h4>Total à payer : {{ totalAmount }} €</h4>
       </div>
   
-      <button type="submit" class="btn btn-success mb-5">Valider votre paiement</button>
+      <button type="submit" class="btn btn-success mb-5 me-3">Valider votre paiement</button>
+      <button type="submit" class="btn btn-dark mb-5" (click)="returnorder()">Revenir à votre commande</button>
     </form>
   
     <!-- Modal de validation du paiement -->

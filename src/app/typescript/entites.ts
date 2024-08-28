@@ -14,16 +14,19 @@
     id: number;
     product_name: string;
     product_description: string;
-    price: number; 
+    price: number;
+    quantity: number; 
   }
   
 
 export interface Item {
   id?: number;
   price: number;
-  quantite: number;
+  quantity: number;
   product: Product;
 }
+
+
 
 
 export interface Service {

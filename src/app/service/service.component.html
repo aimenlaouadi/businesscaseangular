@@ -20,7 +20,6 @@
       <!-- Affichage des services sélectionnés -->
       <div class="row mt-5" *ngIf="selectedServices.length > 0">
         <div class="col-lg-12">
-          <h2>Votre Commande</h2>
           <div class="accordion" id="selectedServiceAccordion">
             <div class="accordion-item" *ngFor="let service of selectedServices; let i = index">
               <h2 class="accordion-header">
@@ -35,20 +34,26 @@
                   <!-- Affichage des produits associés -->
                   <div *ngIf="productsMap[service.id] && productsMap[service.id].length > 0">
                     <h4>Produits associés :</h4>
-                    <div class="d-flex overflow-auto">
-                      <div class="card flex-shrink-0 me-3" style="width: 18rem;" *ngFor="let product of productsMap[service.id]">
-                        <img class="card-img-top" src="https://via.placeholder.com/150" alt="Image du produit">
-                        <div class="card-body">
-                          <h5 class="card-title">{{ product.product_name }}</h5>
-                          <div class="border-titlecard"></div>
-                          <p class="card-text">{{ product.product_description }}</p>
-                          <p class="card-text"><strong>{{ product.price }} €</strong></p>
-                          <button (click)="addToCart(product)" class="btn btn-success">Ajouter au panier</button>
+                    <div class="row">
+                      <div class="col-lg-4 col-md-6 mb-3" *ngFor="let product of productsMap[service.id]">
+                        <div class="card h-100">
+                          <img class="card-img-top" src="https://via.placeholder.com/150" alt="Image du produit">
+                          <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">{{ product.product_name }}</h5>
+                            <p class="card-text">{{ product.product_description }}</p>
+                            <p class="card-text"><strong>{{ product.price }} €</strong></p>
+                            
+                            <div class="d-flex align-items-center mb-3">
+                              <button class="btn btn-outline-primary btn-sm me-2" (click)="decreaseProductQuantity(product)">-</button>
+                              <span class="me-2">Quantité : {{ product.quantity }}</span>
+                              <button class="btn btn-outline-primary btn-sm" (click)="increaseProductQuantity(product)">+</button>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div *ngIf="!productsMap[service.id] || productsMap[service.id].length === 0">
+                  <div *ngIf="productsMap[service.id] && productsMap[service.id].length === 0">
                     <p>Aucun produit associé à ce service.</p>
                   </div>
                 </div>
@@ -56,33 +61,8 @@
             </div>
           </div>
 
-          <!-- Affichage du panier -->
-          <div class="total mt-4">
-            <ng-template #emptyCart>
-              <p>Votre panier est vide.</p>
-            </ng-template>
-          </div>
-
-          <h3>Panier</h3>
-          <div *ngIf="items.length > 0">
-            <ul class="list-group mb-3">
-              <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let item of items">
-                <div>
-                  <h5>{{ item.product.product_name }}</h5>
-                  <p>Prix : {{ item.price }} €</p>
-                </div>
-                <div class="d-flex align-items-center">
-                  <button class="btn btn-outline-primary me-2" (click)="decreaseItemQuantity(item)">-</button>
-                  <span class="me-3">Quantité : {{ item.quantite }}</span>
-                  <button class="btn btn-outline-primary me-2" (click)="increaseItemQuantity(item)">+</button>
-                  <button class="btn btn-outline-danger" (click)="removeFromCart(item)">Supprimer</button>
-                </div>
-              </li>
-            </ul>
-            <h4>Total général : {{ calculateTotal() }} €</h4>
-            <button class="btn btn-danger mt-3 me-2" (click)="clearCart()">Vider le panier</button>
-            <button class="btn btn-success mt-3" (click)="goToCart()">Ajouter aux Panier</button>
-          </div>
+          <!-- Bouton pour accéder au panier et ajouter les produits -->
+          <button class="btn btn-success mt-3" (click)="addAllToCartAndGoToCart()">J'accède au Panier</button>
         </div>
       </div>
     </div>

@@ -1,14 +1,17 @@
 import { Injectable } from '@angular/core';
-import { Item } from '../../../typescript/entites'; 
+import { Item, Product } from '../../../typescript/entites'; 
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LocalstorageService {
 
+  private apiUrl = 'http://localhost:8000/api';
   private storageKey = 'cartItems';  
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
  
   getItems(): Item[] {
@@ -39,4 +42,6 @@ export class LocalstorageService {
   clearItems(): void {
     localStorage.removeItem(this.storageKey);
   }
+
+
 }

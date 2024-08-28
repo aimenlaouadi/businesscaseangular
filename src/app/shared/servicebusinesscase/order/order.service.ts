@@ -28,4 +28,9 @@ addItemToCart(item: Item): Observable<Item> {
   return this.http.post<Item>(`${this.apiUrl}/items`, item);
 }
 
+
+  getProductsByServiceId(serviceId: number): Observable<Product[]> {
+    return this.http.get<Product[]>(`${this.apiUrl}/services/${serviceId}/products`);
+  }
+
 }

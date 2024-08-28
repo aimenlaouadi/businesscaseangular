@@ -20,9 +20,23 @@ export class PanierComponent implements OnInit {
     this.items = this.localstorageService.getItems();
   }
 
+  // Méthode pour augmenter la quantité d'un item
+  increaseItemQuantity(item: Item): void {
+    item.quantity++;
+    this.localstorageService.saveItems(this.items);  // Sauvegarder les items mis à jour dans le localStorage
+  }
+
+  // Méthode pour diminuer la quantité d'un item
+  decreaseItemQuantity(item: Item): void {
+    if (item.quantity > 1) {
+      item.quantity--;
+      this.localstorageService.saveItems(this.items);  // Sauvegarder les items mis à jour dans le localStorage
+    }
+  }
+
   // Méthode pour calculer le total
   calculateTotal(): number {
-    return this.items.reduce((total, item) => total + item.price * item.quantite, 0);
+    return this.items.reduce((total, item) => total + item.price * item.quantity, 0);
   }
 
   // Méthode pour vider le panier
@@ -31,9 +45,8 @@ export class PanierComponent implements OnInit {
     this.items = [];
   }
 
-
+  // Méthode pour valider la commande
   validateOrder(): void {
-    
-   this.router.navigate(['/payment']);
+    this.router.navigate(['/payment']);
   }
 }

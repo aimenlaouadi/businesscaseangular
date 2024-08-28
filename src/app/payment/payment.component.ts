@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { LocalstorageService } from '../shared/servicebusinesscase/localstorage/localstorage.service';
 import { Item } from '../typescript/entites';
 import { NgClass, NgFor, NgIf } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-payment',
@@ -19,7 +20,8 @@ export class PaymentComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private localstorageService: LocalstorageService
+    private localstorageService: LocalstorageService,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -36,7 +38,7 @@ export class PaymentComponent implements OnInit {
   }
 
   calculateTotal(): number {
-    return this.items.reduce((total, item) => total + item.price * item.quantite, 0);
+    return this.items.reduce((total, item) => total + item.price * item.quantity, 0);
   }
 
   validatePayment(): void {
@@ -52,6 +54,10 @@ export class PaymentComponent implements OnInit {
       console.log('Formulaire de paiement non valide');
       this.paymentForm.markAllAsTouched();
     }
+  }
+
+  returnorder() {
+    this.router.navigate(['/panier']);
   }
 
   // Méthode pour fermer la modal de succès
