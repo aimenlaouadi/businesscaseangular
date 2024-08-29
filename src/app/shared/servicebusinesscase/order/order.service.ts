@@ -25,7 +25,7 @@ getProductByUri(uri: string): Observable<Product> {
   return this.http.get<Product>("http://localhost:8000"+uri);
 }
 addItemToCart(item: Item): Observable<Item> {
-  return this.http.post<Item>(`${this.apiUrl}/items`, item);
+  return this.http.post<Item>(`${this.apiUrl}/itemss`, item);
 }
 
 
@@ -39,7 +39,7 @@ addItemToCart(item: Item): Observable<Item> {
   }
 
   createItem(item: Item): Observable<any> {
-    return this.http.post(`${this.apiUrl}/items`, item)
+    return this.http.post(`${this.apiUrl}/itemss`, item)
   }
   
 

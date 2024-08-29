@@ -49,4 +49,13 @@ export class PanierComponent implements OnInit {
   validateOrder(): void {
     this.router.navigate(['/payment']);
   }
+
+  removeItem(item: any): void {
+    const index = this.items.indexOf(item);
+    if (index > -1) {
+      this.items.splice(index, 1);
+    }
+  }
+  
+
 }
