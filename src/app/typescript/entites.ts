@@ -26,7 +26,11 @@ export interface Item {
   product: Product;
 }
 
-
+export interface Order {
+id?: number;
+user_id: number;
+date:string;
+}
 
 
 export interface Service {
@@ -41,4 +45,11 @@ export interface Service {
 export interface HydraCollection<T> {
   'hydra:member': T[];
   
+}
+
+export interface Token {
+  exp: number;
+  roles:string[];
+  username: string;
+  user_id: number;
 }

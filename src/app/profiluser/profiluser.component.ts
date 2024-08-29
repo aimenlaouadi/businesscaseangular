@@ -14,7 +14,7 @@ import { CommonModule } from '@angular/common';
 })
 export class ProfiluserComponent implements OnInit {
   user: any = {};
-  form: FormGroup;
+  form!: FormGroup;
   message: string = '';
   showSuccessMessage: boolean = false;
   showErrorMessage: boolean = false;
@@ -25,45 +25,58 @@ export class ProfiluserComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private authService: AuthService
-  ) {
-    // Initialisez le formulaire ici
+  ) {}
+
+  ngOnInit(): void {
+    // Initialisation du formulaire
     this.form = this.fb.group({
       username: ['', Validators.required],
       lastname: ['', Validators.required],
       firstname: ['', Validators.required],
-      telephone: ['', Validators.required],
-    });
-  }
+      telephone: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]], // Validation du numéro de téléphone à 10 chiffres
+      password: ['', [Validators.required, Validators.minLength(6)]],  // Ajout du champ mot de passe avec validation
+      confirmPassword: ['', Validators.required],  // Champ de confirmation du mot de passe
+    }, { validator: this.passwordMatchValidator });
 
-  ngOnInit(): void {
+    // Récupération de l'utilisateur via l'ID dans les paramètres de la route
     this.route.params.subscribe(params => {
       const userId = +params['id']; 
       if (!isNaN(userId)) {
-        this.profiluserService.getUser(userId).subscribe(
-          user => {
-            this.user = user;
-            
-            this.form.patchValue({
-              username: this.user.username,
-              lastname: this.user.lastname,
-              firstname: this.user.firstname,
-              telephone: this.user.telephone,
-              password: this.user.password, 
-            });
-          },
-          error => {
-            console.error('Erreur lors de la récupération de l\'utilisateur', error);
-            this.message = 'Erreur lors de la récupération de l\'utilisateur';
-            this.showErrorMessage = true;
-          }
-        );
+        this.loadUser(userId);
       } else {
-        this.message = 'ID utilisateur invalide';
-        this.showErrorMessage = true;
+        this.showError('ID utilisateur invalide');
       }
     });
   }
 
+  // Fonction pour charger les données utilisateur
+  loadUser(userId: number): void {
+    this.profiluserService.getUser(userId).subscribe(
+      user => {
+        this.user = user;
+        this.form.patchValue({
+          username: this.user.username,
+          lastname: this.user.lastname,
+          firstname: this.user.firstname,
+          telephone: this.user.telephone,
+          password: '',
+          confirmPassword: ''
+        });
+      },
+      error => {
+        this.showError('Erreur lors de la récupération de l\'utilisateur');
+      }
+    );
+  }
+
+  // Validation de correspondance des mots de passe
+  passwordMatchValidator(form: FormGroup) {
+    const password = form.get('password')?.value;
+    const confirmPassword = form.get('confirmPassword')?.value;
+    return password === confirmPassword ? null : { mismatch: true };
+  }
+
+  // Fonction pour mettre à jour l'utilisateur
   updateUser(): void {
     if (this.form.valid) {
       const updatedUser = this.form.value;
@@ -71,40 +84,45 @@ export class ProfiluserComponent implements OnInit {
 
       this.profiluserService.updateUser(updatedUser.id, updatedUser).subscribe(
         response => {
-          this.message = 'Votre profil a été mis à jour avec succès!';
-          this.showSuccessMessage = true;
-          this.showErrorMessage = false;
-          setTimeout(() => {
-            this.showSuccessMessage = false;
-            this.router.navigateByUrl('/connexion');
-          }, 1000);
+          this.showSuccess('Votre profil a été mis à jour avec succès!');
+          setTimeout(() => this.router.navigateByUrl('/connexion'), 1000);
         },
         error => {
-          console.error('Erreur lors de la mise à jour du profil', error);
-          this.message = 'Erreur lors de la mise à jour du profil';
-          this.showErrorMessage = true;
+          this.showError('Erreur lors de la mise à jour du profil');
         }
       );
+    } else {
+      this.form.markAllAsTouched(); // Marquer tous les champs comme touchés pour afficher les erreurs
     }
   }
 
+  // Fonction pour supprimer l'utilisateur
   deleteUser(): void {
     this.profiluserService.deleteUser(this.user.id).subscribe(
       () => {
-        this.message = 'Votre profil a été supprimé avec succès!';
-        this.showSuccessMessage = true;
-        this.showErrorMessage = false;
+        this.showSuccess('Votre profil a été supprimé avec succès!');
         setTimeout(() => {
-          this.showSuccessMessage = false;
-          this.router.navigateByUrl('/');
           this.authService.logout();
+          this.router.navigateByUrl('/');
         }, 3000);
       },
       error => {
-        console.error('Erreur lors de la suppression du profil', error);
-        this.message = 'Erreur lors de la suppression du profil';
-        this.showErrorMessage = true;
+        this.showError('Erreur lors de la suppression du profil');
       }
     );
+  }
+
+  // Afficher un message de succès
+  private showSuccess(message: string): void {
+    this.message = message;
+    this.showSuccessMessage = true;
+    this.showErrorMessage = false;
+  }
+
+  // Afficher un message d'erreur
+  private showError(message: string): void {
+    this.message = message;
+    this.showSuccessMessage = false;
+    this.showErrorMessage = true;
   }
 }

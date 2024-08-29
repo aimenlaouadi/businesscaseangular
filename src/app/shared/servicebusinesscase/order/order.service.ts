@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { Item, Product, Service } from '../../../typescript/entites'; // Assurez-vous que ce chemin est correct
+import { map, Observable } from 'rxjs';
+import { Item, Order, Product, Service } from '../../../typescript/entites'; // Assurez-vous que ce chemin est correct
 
 interface HydraCollection<T> {
   'hydra:member': T[];
@@ -32,5 +32,15 @@ addItemToCart(item: Item): Observable<Item> {
   getProductsByServiceId(serviceId: number): Observable<Product[]> {
     return this.http.get<Product[]>(`${this.apiUrl}/services/${serviceId}/products`);
   }
+
+
+  createOrder(order: Order): Observable<any> {
+    return this.http.post(`${this.apiUrl}/orders`, order)
+  }
+
+  createItem(item: Item): Observable<any> {
+    return this.http.post(`${this.apiUrl}/items`, item)
+  }
+  
 
 }
