@@ -4,6 +4,7 @@ import { ProfiluserService } from '../shared/servicebusinesscase/profiluserservi
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../shared/servicebusinesscase/authentification/authservice.service';
 import { CommonModule } from '@angular/common';
+import { JwtService } from '../shared/servicebusinesscase/jwt/jwt.service';
 
 @Component({
   selector: 'app-profiluser',
@@ -18,17 +19,22 @@ export class ProfiluserComponent implements OnInit {
   message: string = '';
   showSuccessMessage: boolean = false;
   showErrorMessage: boolean = false;
+  
 
   constructor(
     private fb: FormBuilder,
     private profiluserService: ProfiluserService,
     private route: ActivatedRoute,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private jwt: JwtService,
   ) {}
+
+  iduser: number = this.jwt.getDecodeToken().user_id;
 
   ngOnInit(): void {
     // Initialisation du formulaire
+
     this.form = this.fb.group({
       username: ['', Validators.required],
       lastname: ['', Validators.required],
@@ -37,23 +43,17 @@ export class ProfiluserComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(6)]],  // Ajout du champ mot de passe avec validation
       confirmPassword: ['', Validators.required],  // Champ de confirmation du mot de passe
     }, { validator: this.passwordMatchValidator });
-
-    // Récupération de l'utilisateur via l'ID dans les paramètres de la route
-    this.route.params.subscribe(params => {
-      const userId = +params['id']; 
-      if (!isNaN(userId)) {
-        this.loadUser(userId);
-      } else {
-        this.showError('ID utilisateur invalide');
-      }
-    });
+    this.loadUser();
+ 
+    
   }
 
   // Fonction pour charger les données utilisateur
-  loadUser(userId: number): void {
-    this.profiluserService.getUser(userId).subscribe(
+  loadUser(): void {
+    this.profiluserService.getUser(this.iduser).subscribe(
       user => {
         this.user = user;
+        console.log(this.user);
         this.form.patchValue({
           username: this.user.username,
           lastname: this.user.lastname,

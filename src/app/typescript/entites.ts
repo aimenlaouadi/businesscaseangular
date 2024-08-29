@@ -15,7 +15,9 @@
     product_name: string;
     product_description: string;
     price: number;
-    quantity: number; 
+    quantity: number;
+    images:string;
+    services: string[]; 
   }
   
 
@@ -28,8 +30,9 @@ export interface Item {
 
 export interface Order {
 id?: number;
-user_id: number;
+user: string;
 date:string;
+items: string[];
 }
 
 
@@ -52,4 +55,14 @@ export interface Token {
   roles:string[];
   username: string;
   user_id: number;
+}
+
+export interface NewItem {
+  price: number;
+  quantite: number;
+  product: string;
+  statusItems: string;
+  orderItems: string;
+  service: string;
+
 }

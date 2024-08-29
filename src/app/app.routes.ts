@@ -22,6 +22,6 @@ export const routes: Routes = [
     {path:'apropos' , component:AproposComponent},
     {path:'panier' , component:PanierComponent},
     {path:'payment' , component:PaymentComponent, canActivate: [authGuard] },
-    {path:'profiluser/:id', component:ProfiluserComponent, canActivate: [authGuard] },
+    {path:'profiluser', component:ProfiluserComponent, canActivate: [authGuard] },
     {path: '**', component:Error404Component}
 ]

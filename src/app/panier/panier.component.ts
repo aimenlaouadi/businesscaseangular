@@ -23,6 +23,7 @@ export class PanierComponent implements OnInit {
   // Méthode pour augmenter la quantité d'un item
   increaseItemQuantity(item: Item): void {
     item.quantity++;
+    
     this.localstorageService.saveItems(this.items);  // Sauvegarder les items mis à jour dans le localStorage
   }
 
