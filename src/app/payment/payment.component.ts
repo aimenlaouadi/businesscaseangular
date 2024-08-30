@@ -70,14 +70,14 @@ export class PaymentComponent implements OnInit {
         })
         items.forEach((item: NewItem) =>{
           this.orderService.createItem(item).subscribe(() =>{
-            console.log("sa marcher")
           });
         })
       });
     }
+    this.paymentSuccess = true;
   }
 
-  
+
 
   // Retourner à la page de commande
   returnToOrder(): void {

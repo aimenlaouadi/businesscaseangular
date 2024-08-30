@@ -1,6 +1,8 @@
-h2 {
-    color: #002f87; 
-  }
+h1, h2{
+  color:#007A99;
+  font-weight: bold;
+}
+
 
 p {
     text-align: center;
@@ -86,3 +88,4 @@ p {
   padding: 10px;
 
 }
+
