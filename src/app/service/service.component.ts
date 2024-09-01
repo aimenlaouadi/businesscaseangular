@@ -85,7 +85,7 @@ export class ServiceComponent implements OnInit {
       const newItem: Item = {
         product: product,
         quantity: product.quantity || 1, // S'assurer que la quantité est prise en compte
-        price: product.price
+        price: product.price,
       };
       cart.push(newItem);
     }

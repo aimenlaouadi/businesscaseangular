@@ -39,7 +39,6 @@ items: string[];
 export interface Service {
   id: number;
   service_type: string;
-  service_price: number;
   description: string;
   images: string;
   products:string[];

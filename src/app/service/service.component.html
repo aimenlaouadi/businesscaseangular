@@ -29,8 +29,6 @@
               </h2>
               <div [ngClass]="{'show': activeAccordionIndex === i}" class="accordion-collapse collapse">
                 <div class="accordion-body">
-                  <p>Prix Unitaire : {{ service.service_price }} €</p>
-
                   <!-- Affichage des produits associés -->
                   <div *ngIf="productsMap[service.id] && productsMap[service.id].length > 0">
                     <h4>Produits associés :</h4>

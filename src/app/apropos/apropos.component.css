@@ -6,10 +6,8 @@
   padding-bottom: 60px;
 }
 
-.notre-histoire h2,
-.notre-philosophie h3,
-.nos-valeurs h4,
-.notre-equipe h5 {
+h2,h4,h5 {
+  color:#007A99;
   font-weight: bold;
 }
 
@@ -65,4 +63,14 @@
 
 .team-img:hover .overlay {
   opacity: 1;
+}
+
+.notre-philosophie, h3{
+  background: #007A99;
+  color:white;
+  font-weight: bold;
+}
+
+.margin{
+  margin-bottom: 40px;
 }
