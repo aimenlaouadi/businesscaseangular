@@ -32,18 +32,28 @@
           </ul>
         </li>
       </ul>
-      <div class="d-flex" *ngIf="!isLogged()">
-        <a class="nav-link" routerLink="/connexion" class="btn btn-secondary">
-          <img src="https://img.icons8.com/?size=30&id=IerOpHeUt2OH&format=png&color=000000"> Se connecter
-        </a>
+
+      
+      <div class="d-flex flex-column align-items-center"> 
+        <div *ngIf="isLogged()">
+          <span class="nav-link">Bonjour: {{user?.firstname}}</span>
+        </div>
+
+        <!-- Boutons de connexion ou de déconnexion selon l'état de l'utilisateur -->
+        <div class="d-flex" *ngIf="!isLogged()">
+          <a class="nav-link" routerLink="/connexion" class="btn btn-secondary">
+            <img src="https://img.icons8.com/?size=30&id=IerOpHeUt2OH&format=png&color=000000"> Se connecter
+          </a>
+        </div>
+        <div class="d-flex" *ngIf="isLogged() else notLogged">
+          <a routerLink="/profiluser" class="btn btn-info me-2 d-flex align-items-center">
+            <i class="fas fa-user-circle fa-lg"></i> 
+          </a>
+          <button type="button" class="btn btn-secondary" (click)="logout()">Se déconnecter</button>
+        </div>
+        <ng-template #notLogged></ng-template>
       </div>
-      <div class="d-flex" *ngIf="isLogged() else notLogged">
-        <a routerLink="/profiluser" class="btn btn-info me-2 d-flex align-items-center">
-          <i class="fas fa-user-circle fa-lg"></i> 
-        </a>
-        <button type="button" class="btn btn-secondary" (click)="logout()">Se déconnecter</button>
-      </div>
-      <ng-template #notLogged></ng-template>
+
     </div>
   </div>
 </nav>

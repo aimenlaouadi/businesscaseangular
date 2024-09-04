@@ -36,7 +36,7 @@ export class ConnexionComponent implements OnInit {
           console.log('Token received:', token); // Pour déboguer
           this.authService.saveToken(token.token);
           //if (role === user)  this.router.navigate(['/service']); tu aura acces a tel page
-          this.router.navigate(['/payment']); 
+          this.router.navigate(['/']); 
         },
         error => {
           console.error('Login failed', error);
