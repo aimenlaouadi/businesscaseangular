@@ -153,7 +153,7 @@ a {
 }
 
 .hero {
-  background: linear-gradient(rgba(0, 151, 178, 0.8), rgba(0, 151, 178, 0.8)), url('https://images.unsplash.com/photo-1545173168-9f1947eebb7f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+  background: linear-gradient(rgba(0, 151, 178, 0.8), rgba(0, 151, 178, 0.8)), url('/images/machine.jpg');
   background-size: cover;
   background-position: center;
   height: 100vh;

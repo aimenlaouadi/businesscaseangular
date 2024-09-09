@@ -1,214 +1,140 @@
 @import url('https://fonts.googleapis.com/css?family=Shrikhand|Roboto&display=swap');
 
-
 body {
   background: #00b4ff;
   color: #333;
-  font: 100% Lato, Arial, sans-serif;
-  height: 100vh;
+  font-family: 'Roboto', Arial, sans-serif;
   margin: 0;
   padding: 0;
   overflow-x: hidden;
 }
 
-#washer {
-  margin: 50px auto;
-  width: 200px;
-  text-align: center;
-}
-
-.centered {
-  margin: 0 auto;
-  text-align: center;
-  font-family: 'Shrikhand', cursive;
-}
-
-.gray {
-  color: #999;
-}
-
-a {
-  text-decoration: none;
-}
-
-*, *:before, *:after {
-  box-sizing: border-box;
-  outline: none;
-}
-
-/* Animation de rotation de la machine à laver */
-@keyframes circle {
-  from {
-    transform: rotate(0deg) rotate(-360deg);
-  }
-  to {
-    transform: rotate(0deg) rotate(360deg);
-  }
-}
-
-#door {
-  background-image: linear-gradient(top, #f4f1ee, #fff);
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, .3), inset 0px 4px 1px 1px white, inset 0px -3px 1px 1px rgba(204,198,197,.5);
-  border-radius: 50%;
-  height: 200px;
-  width: 200px;
-  position: relative;
-  border: 2px solid #ccc;
-}
-
-#inner-door {
-  background: #666;
-  border-radius: 50%;
-  height: 140px;
-  width: 140px;
-  position: relative;
-  border: 2px solid #ccc;
-  top: 28px;
-  left: 28px;
-}
-
-#drum {
-  background: #fff;
-  width: 120px;
-  height: 120px;
-  margin: 5px auto;
-  border-top: 15px solid #bbb;
-  border-left: 15px solid #bbb;
-  border-right: 15px solid transparent;
-  border-bottom: 15px solid #bbb;
-  border-radius: 50%;
-  box-shadow: 0 0 5px 1px #aaa;
-  animation: circle 3s infinite linear;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin: -60px 0 0 -60px;
-}
-
-.handle:after {
-  content: '‹ ›';
-  text-align: center;
-  font-size: 24px;
-  line-height: 26px;
-  display: block;
-  position: absolute;
-  width: 30px;
-  height: 30px;
-  border-radius: 100%;
-  top: 50%;
-  left: 102%;
-  font-weight: 700;
-  margin: -15px 0 0 -15px;
-  background: #fff;
-  box-shadow: 0px 1px 1px #222, inset 0px 1px 1px white;
-}
-
-.arc {
-  overflow: hidden;
-  position: absolute;
-  top: -1em;
-  right: 50%;
-  bottom: 50%;
-  left: -1em;
-  transform-origin: 100% 100%;
-  transform: rotate(165deg) skewX(60deg);
-}
-
-.arc:before {
-  box-sizing: border-box;
-  display: block;
-  border: solid 1.3em #777;
-  width: 225%;
-  height: 210%;
-  border-radius: 50%;
-  transform: skewX(-60deg);
-  content: '';
-}
-
-.page {
-  height: 115px;
-  width: 115px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: #ccc;
-  border-radius: 50%;
-  overflow: hidden;
-}
-
-.percent {
-  color: #fff;
-  position: absolute;
-  top: 0;
-  left: 0;
+/* FORMULAIRE */
+.form-margin {
+  padding: 40px;
+  background: #0097B2;
+  color: white;
+  font-weight: bold;
+  border: 3px solid lightgray;
+  border-radius: 20px;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+  margin-top: 100px;
   width: 100%;
-  height: 100%;
-  text-align: center;
-  font-weight: lighter;
-  z-index: 10;
+  max-width: 500px;
+}
+
+.btn {
+  background: lightgray;
+  color: white;
+  font-weight: bold;
+}
+
+.btn:hover {
+  background: #0097B2;
+}
+
+h2 {
+  font-weight: bold;
+}
+
+.lien {
+  margin-left: 10px;
+  font-size: small;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+.button {
+  background: #0097B2;
+  font-weight: bold;
+  color: #fff;
+  border: 2px solid #fff;
+  padding: 10px 20px;
+  margin-top: 15px;
+  border-radius: 5px;
+}
+
+.button:hover {
+  background: #fff;
+  color: #0097B2;
+  border-color: #0097B2;
+  transform: scale(1.05);
+  box-shadow: 0 8px 15px rgba(0, 151, 178, 0.3);
+}
+
+/* Responsivité */
+.section-background {
+  background: lightgray;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: auto;
+  min-height: 100vh;
+  width: 100%;
+  padding: 20px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center; 
 }
 
-.temperature, .temperature-num, .temperature-sign {
-  display: inline-block;
-  font-size: 1.5em;
+/* S'assurer que la mise en page est fluide */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.water {
+/* Media Queries pour Responsivité */
+@media (max-width: 768px) {
+  .form-margin {
+    padding: 30px;
+    margin-top: 50px;
+    width: 100%;
+  }
+
+  h2 {
+    font-size: 1.8em;
+  }
+
+  .button {
+    padding: 8px 16px;
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 576px) {
+  .form-margin {
+    padding: 20px;
+    margin-top: 30px;
+  }
+
+  h2 {
+    font-size: 1.5em;
+  }
+
+  .button {
+    padding: 6px 12px;
+    font-size: 0.9em;
+  }
+}
+
+/* Bulles et animations restent inchangées */
+.bubble {
+  border-radius: 50%;
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2), inset 0px 10px 30px 5px rgba(255, 255, 255, 1);
+  height: 200px;
   position: absolute;
-  height: 100%;
-  width: 100%;
-  z-index: 5;
+  width: 200px;
+}
+
+.bubbles {
+  position: absolute;
   bottom: 0;
-  left: 0;
-  background: #32bafa;
-  transform: translate(0, 50%);
-}
-
-.water-inner {
-  position: absolute;
-  width: 100%;
-  height: 50%;
-  top: 0;
+  height: 100%;
   left: 0;
   overflow: hidden;
+  width: 100%;
 }
 
-.water-wave {
-  width: 200%;
-  position: absolute;
-  bottom: 100%;
-}
-
-.water-wave-back {
-  right: 0;
-  fill: #aaa;
-  animation: wave-back 1.9s infinite linear;
-}
-
-.water-wave-front {
-  left: 0;
-  fill: #32bafa;
-  margin-bottom: -1px;
-  animation: wave-front 1.2s infinite linear;
-}
-
-@keyframes wave-front {
-  100% {
-    transform: translate(-50%, 0);
-  }
-}
-
-@keyframes wave-back {
-  100% {
-    transform: translate(50%, 0);
-  }
-}
-
-/* Animation des bulles */
 @keyframes animateBubble {
   0% {
     margin-top: 1000px;
@@ -296,83 +222,3 @@ a {
   top: 80%;
   transform: scale(0.3);
 }
-
-.bubble {
-  border-radius: 50%;
-  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2), inset 0px 10px 30px 5px rgba(255, 255, 255, 1);
-  height: 200px;
-  position: absolute;
-  width: 200px;
-}
-
-
-.bubbles {
-  position: absolute;
-  bottom: 0;
-  height: 100%;
-  left: 0;
-  overflow: hidden;
-  width: 100%;
-}
-
-
-
-.section-background{
-  background: lightgray;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 800px;
-  width: 100%;
-}
-
-.form-margin {
-  padding: 40px;
-  background: #0097B2;
-  color: white;
-  font-weight: bold;
-  border: 3px solid lightgray;
-  border-radius: 20px;
-  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
-  margin-top: 100px;
-}
-
-.btn{
-  background: lightgray;
-  color: 
-  white;
-  font-weight: bold;
-}
-
-.btn:hover{
-  background: #0097B2;
-}
-
-h2{
-  font-weight: bold;
-}
-
-.lien{
-  margin-left: 10px;
-  font-size: small;
-  text-decoration: none;
-  color: white;
-  font-weight: bold;
-}
-
-.button {
-  background: #0097B2;
-  font-weight: bold;
-  color: #fff;
-  border: 2px solid #fff;
-  padding: 5px;
-  margin-top: 15px;
-}
-
-.button:hover {
-  background: #fff;
-  color: #0097B2;
-  border-color: #0097B2;
-  transform: scale(1.05);
-  box-shadow: 0 8px 15px rgba(0, 151, 178, 0.3);
-}
-

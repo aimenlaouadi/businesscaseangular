@@ -86,6 +86,7 @@ export class ServiceComponent implements OnInit {
         product: product,
         quantity: product.quantity || 1, // S'assurer que la quantité est prise en compte
         price: product.price,
+      
       };
       cart.push(newItem);
     }

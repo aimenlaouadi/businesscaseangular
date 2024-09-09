@@ -69,6 +69,7 @@ h2,h4,h5 {
   background: #007A99;
   color:white;
   font-weight: bold;
+ 
 }
 
 .margin{
@@ -76,7 +77,8 @@ h2,h4,h5 {
 }
 
 .notre-histoire{
-  margin-top:100px;
+  margin-top:70px;
   height: 300px;
+  margin-bottom: 100px;
 }
 
