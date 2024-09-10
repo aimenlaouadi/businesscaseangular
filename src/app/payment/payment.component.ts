@@ -63,10 +63,10 @@ export class PaymentComponent implements OnInit {
           price: item.price,
           quantite: item.quantity,
           product: `/api/products/${item.product.id}`,
-          statusItems: `/api/status_itemss/2`,
           orderItems: `/api/orders/${newOrder.id}`,
           service: item.product.services[0],
          } 
+         
         })
         items.forEach((item: NewItem) =>{
           this.orderService.createItem(item).subscribe(() =>{

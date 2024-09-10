@@ -60,8 +60,6 @@ export interface NewItem {
   price: number;
   quantite: number;
   product: string;
-  statusItems: string;
   orderItems: string;
   service: string;
-
 }
