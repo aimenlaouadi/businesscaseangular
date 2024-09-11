@@ -13,10 +13,10 @@ import { User } from '../typescript/entites';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  user: User | null = null;
+  user: any = {};
 
   constructor(
-    private profilUserService: ProfiluserService,
+
     private authService: AuthService,
     private router: Router
   ) {}
@@ -25,6 +25,7 @@ export class HeaderComponent implements OnInit {
     if (this.authService.isLogged()) {
       this.authService.fetchCurrentUser().subscribe((user: User) => {
         this.user = user;
+        console.log('utilisateur connecté:', user);
       });
     }
   }
