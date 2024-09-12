@@ -3,6 +3,7 @@ import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../../shared/servicebusinesscase/user/user.service';
+import { AuthService } from '../../shared/servicebusinesscase/authentification/authservice.service'; 
 
 @Component({
   selector: 'app-inscription',
@@ -13,7 +14,8 @@ import { UserService } from '../../shared/servicebusinesscase/user/user.service'
 })
 export class InscriptionComponent {
 
-  service = inject(UserService);
+  userService = inject(UserService);
+  authService = inject(AuthService); 
   router = inject(Router);
 
   public loginForm: FormGroup = new FormGroup({
@@ -32,17 +34,31 @@ export class InscriptionComponent {
   onSubmit() {
     if (this.loginForm.valid) {
       this.isSubmitting = true;
-      this.service.register(this.loginForm.value).subscribe({
+      this.userService.register(this.loginForm.value).subscribe({
         next: (response) => {
           console.log('Inscription réussie', response);
           this.isRegistrationSuccessful = true;
           this.showPopup = true;
           this.registrationError = null;
-          console.log(this.loginForm.value);
-          setTimeout(() => {
-            this.showPopup = false;
-            this.router.navigate(['connexion']);
-          }, 3000);
+
+          // Connexion automatique après inscription
+          this.authService.login({
+            username: this.loginForm.value.username,
+            password: this.loginForm.value.password
+          }).subscribe({
+            next: (loginResponse) => {
+              this.authService.saveToken(loginResponse.token); // Sauvegarde du token
+             
+              setTimeout(() => {
+                this.showPopup = false;
+                this.router.navigate(['dashboard']); // Redirection après connexion
+              }, 3000);
+            },
+            error: (loginError) => {
+              console.error('Erreur lors de la connexion', loginError);
+              this.registrationError = 'Une erreur est survenue lors de la connexion.';
+            }
+          });
         },
         error: (error) => {
           console.error('Erreur inscription', error);
@@ -54,7 +70,6 @@ export class InscriptionComponent {
           } else {
             this.registrationError = 'Une erreur est survenue lors de l\'inscription. Veuillez réessayer plus tard.';
           }
-          console.log(this.loginForm.value);
         }
       });
     } else {
@@ -62,7 +77,6 @@ export class InscriptionComponent {
       this.loginForm.markAllAsTouched();
     }
   }
-
 
   hasError(controlName: string, errorName: string): boolean {
     return this.loginForm.controls[controlName].hasError(errorName) && this.loginForm.controls[controlName].touched;
