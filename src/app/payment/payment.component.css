@@ -1,0 +1,58 @@
+/* Réduire encore la taille des boutons */
+.btn-sm-custom {
+    padding: 6px 12px; /* Ajustement du padding pour rendre les boutons plus compacts */
+    font-size: 14px;
+    border-radius: 5px;
+    width: auto; /* Permet au bouton de s'ajuster automatiquement à son contenu */
+    min-width: 100px; /* Ajoute une largeur minimale pour uniformiser */
+  }
+  
+  /* Boutons dans la modal */
+  .modal-footer .btn-sm-custom {
+    min-width: 80px; /* Réduction encore plus pour les boutons dans la modal */
+  }
+  
+  /* Options de paiement stylées et alignées */
+  .payment-options {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: #f8f9fa;
+  }
+  
+  /* Style des options de paiement */
+  .payment-option {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Ajout d'une légère ombre */
+  }
+  
+  .payment-option:hover {
+    background-color: #e9ecef;
+  }
+  
+  .payment-option i {
+    font-size: 20px; /* Taille des icônes légèrement réduite */
+    margin-right: 5px;
+  }
+  
+  .form-control {
+    border-radius: 5px;
+    padding: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .modal-content {
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+  }
+  

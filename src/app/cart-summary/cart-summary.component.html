@@ -1,0 +1,33 @@
+<div class="cart-summary" *ngIf="cartItems.length > 0">
+  <h5>Résumé du panier</h5>
+  <ul *ngFor="let item of cartItems; let i = index" class="border shadow-sm rounded mb-3 p-3">
+    <li>
+      <strong>{{ item.product.product_name }}</strong>
+    </li>
+    <li class="d-flex align-items-center justify-content-between">
+      <img class="card-img-top img-fluid" [src]="'/images/' + item.product.images" alt="{{item.product.product_name}}" style="width: 50px; height: 50px">
+      <button class="ajouter" (click)="decreaseQuantity(i)">-</button>
+      <span>Qte: {{ item.quantity }}</span>
+      <button class="ajouter" (click)="increaseQuantity(i)">+</button>
+      <span>{{ item.price }} €</span>
+    </li>
+    <!-- Boutons pour gérer la quantité -->
+    <li class="mt-2">
+      <!-- Bouton pour supprimer l'article -->
+      <button class="btn btn-danger btn-sm ms-2" (click)="removeItem(i)">Supprimer</button>
+    </li>
+  </ul>
+
+  <p><strong>Total : {{ getTotalPrice() }} €</strong></p>
+
+  <!-- Bouton pour vider le panier -->
+  <button class="payer mt-3 me-2" (click)="goToCart()">Valider</button>
+  <button class="vider mt-3" (click)="clearCart()">Vider le panier</button>
+
+  <!-- Bouton pour aller au panier -->
+</div>
+
+<!-- Message si le panier est vide -->
+<div *ngIf="cartItems.length === 0">
+  <p>Votre panier est vide.</p>
+</div>

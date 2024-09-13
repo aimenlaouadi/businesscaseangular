@@ -5,6 +5,7 @@
       <ul class="list-group mb-3">
         <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let item of items">
           <div>
+            <img class="card-img-top img-fluid" [src]="'/images/' + item.product.images" alt="{{item.product.product_name}}" style="width: 100px; height: 100px">
             <h5>{{ item.product.product_name }}</h5>
             <p>Prix : {{ item.price }} €</p>
           </div>

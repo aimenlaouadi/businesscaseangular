@@ -49,33 +49,16 @@ export class PaymentComponent implements OnInit {
     return this.items.reduce((total, item) => total + item.price * item.quantity, 0);
   }
 
-  validatePayment(): void {
-    if (this.paymentForm.valid) {
-      const userId = this.jwt.getDecodeToken().user_id;
-      const order: Order = { 
-      user: `/api/users/${userId}`,
-      date: new Date().toISOString(),
-      items: [],
+    // Méthode pour valider le paiement
+    validatePayment() {
+      if (this.paymentForm.valid) {
+        // Si le formulaire est valide, afficher la modal de succès
+        this.paymentSuccess = true;
+      } else {
+        // Si le formulaire est invalide, marquer tous les champs comme touchés pour afficher les erreurs
+        this.paymentForm.markAllAsTouched();
       }
-      this.orderService.createOrder(order).subscribe((newOrder: Order) =>{
-        const items = this.localstorageService.getItems().map((item: Item) =>{
-         return {
-          price: item.price,
-          quantite: item.quantity,
-          product: `/api/products/${item.product.id}`,
-          orderItems: `/api/orders/${newOrder.id}`,
-          service: item.product.services[0],
-         } 
-         
-        })
-        items.forEach((item: NewItem) =>{
-          this.orderService.createItem(item).subscribe(() =>{
-          });
-        })
-      });
     }
-    this.paymentSuccess = true;
-  }
 
 
 

@@ -4,11 +4,12 @@ import { Service, Product, Item } from '../typescript/entites';
 import { Router } from '@angular/router';
 import { NgClass, NgFor, NgIf } from '@angular/common';
 import { OrderService } from '../shared/servicebusinesscase/order/order.service';
+import { CartSummaryComponent } from '../cart-summary/cart-summary.component';
 
 @Component({
   selector: 'app-service',
   standalone: true,
-  imports: [NgClass, NgFor, NgIf],
+  imports: [NgClass, NgFor, NgIf, CartSummaryComponent],
   templateUrl: './service.component.html',
   styleUrls: ['./service.component.css']
 })
