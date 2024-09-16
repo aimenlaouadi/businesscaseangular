@@ -1,4 +1,4 @@
-import { CommonModule, NgIf } from '@angular/common';
+import { NgIf } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -8,7 +8,7 @@ import { AuthService } from '../../shared/servicebusinesscase/authentification/a
 @Component({
   selector: 'app-inscription',
   standalone: true,
-  imports: [NgIf, ReactiveFormsModule, CommonModule],
+  imports: [NgIf, ReactiveFormsModule],
   templateUrl: './inscription.component.html',
   styleUrls: ['./inscription.component.css']
 })

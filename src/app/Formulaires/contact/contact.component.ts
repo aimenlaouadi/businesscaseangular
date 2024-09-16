@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ContactService } from '../shared/servicebusinesscase/contact/contact.service';
+import { ContactService } from '../../shared/servicebusinesscase/contact/contact.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 

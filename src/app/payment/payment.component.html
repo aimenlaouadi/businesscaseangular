@@ -1,100 +1,106 @@
 <section class="h-100 order-section">
   <div class="container mt-5">
-    <h2 class="mb-4 text-center">Paiement</h2>
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-md-10 col-sm-12">
+        <h2 class="mb-4 text-center">Paiement</h2>
 
-    <form [formGroup]="paymentForm" (ngSubmit)="validatePayment()">
-      <!-- Numéro de carte -->
-      <div class="mb-3">
-        <label for="cardNumber" class="form-label">Numéro de carte</label>
-        <input type="text" id="cardNumber" class="form-control" formControlName="cardNumber" placeholder="1234 5678 9012 3456">
-        <div *ngIf="paymentForm.get('cardNumber')?.invalid && paymentForm.get('cardNumber')?.touched" class="text-danger">
-          Numéro de carte invalide.
-        </div>
-      </div>
-
-      <!-- Nom du titulaire -->
-      <div class="mb-3">
-        <label for="cardHolder" class="form-label">Nom du titulaire</label>
-        <input type="text" id="cardHolder" class="form-control" formControlName="cardHolder" placeholder="John Doe">
-        <div *ngIf="paymentForm.get('cardHolder')?.invalid && paymentForm.get('cardHolder')?.touched" class="text-danger">
-          Nom du titulaire requis.
-        </div>
-      </div>
-
-      <!-- Date d'expiration et CVC -->
-      <div class="row mb-3">
-        <div class="col-md-6">
-          <label for="expirationDate" class="form-label">Date d'expiration</label>
-          <input type="text" id="expirationDate" class="form-control" formControlName="expirationDate" placeholder="MM/YYYY">
-          <div *ngIf="paymentForm.get('expirationDate')?.invalid && paymentForm.get('expirationDate')?.touched" class="text-danger">
-            Date d'expiration invalide. Format requis : MM/YYYY.
+        <form [formGroup]="paymentForm" (ngSubmit)="validatePayment()">
+          <!-- Numéro de carte -->
+          <div class="mb-3">
+            <label for="cardNumber" class="form-label">Numéro de carte</label>
+            <input type="text" id="cardNumber" class="form-control" formControlName="cardNumber" placeholder="1234 5678 9012 3456">
+            <div *ngIf="paymentForm.get('cardNumber')?.invalid && paymentForm.get('cardNumber')?.touched" class="text-danger">
+              Numéro de carte invalide.
+            </div>
           </div>
-        </div>
 
-        <div class="col-md-6">
-          <label for="cvc" class="form-label">CVC</label>
-          <input type="text" id="cvc" class="form-control" formControlName="cvc" placeholder="123">
-          <div *ngIf="paymentForm.get('cvc')?.invalid && paymentForm.get('cvc')?.touched" class="text-danger">
-            CVC invalide. Doit contenir 3 chiffres.
+          <!-- Nom du titulaire -->
+          <div class="mb-3">
+            <label for="cardHolder" class="form-label">Nom du titulaire</label>
+            <input type="text" id="cardHolder" class="form-control" formControlName="cardHolder" placeholder="John Doe">
+            <div *ngIf="paymentForm.get('cardHolder')?.invalid && paymentForm.get('cardHolder')?.touched" class="text-danger">
+              Nom du titulaire requis.
+            </div>
           </div>
-        </div>
-      </div>
 
-      <!-- Choix de la date de dépôt -->
-      <div class="mb-3">
-        <label for="depotDate" class="form-label">Choisir la date de dépôt</label>
-        <input type="date" id="depotDate" class="form-control" formControlName="depotDate">
-        <div *ngIf="paymentForm.get('depotDate')?.invalid && paymentForm.get('depotDate')?.touched" class="text-danger">
-          Veuillez choisir une date de dépôt valide.
-        </div>
-      </div>
+          <!-- Date d'expiration et CVC -->
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label for="expirationDate" class="form-label">Date d'expiration</label>
+              <input type="text" id="expirationDate" class="form-control" formControlName="expirationDate" placeholder="MM/YYYY">
+              <div *ngIf="paymentForm.get('expirationDate')?.invalid && paymentForm.get('expirationDate')?.touched" class="text-danger">
+                Date d'expiration invalide. Format requis : MM/YYYY.
+              </div>
+            </div>
 
-      <!-- Options de paiement -->
-      <div class="payment-options mb-4">
-        <div class="form-check payment-option">
-          <input class="form-check-input" type="radio" id="credit_card" formControlName="paymentMethod" value="credit_card">
-          <label class="form-check-label" for="credit_card">
-            <i class="fas fa-credit-card"></i> Carte de crédit
-          </label>
-        </div>
-
-        <div class="form-check payment-option">
-          <input class="form-check-input" type="radio" id="paypal" formControlName="paymentMethod" value="paypal">
-          <label class="form-check-label" for="paypal">
-            <i class="fab fa-paypal"></i> PayPal
-          </label>
-        </div>
-
-        <div class="form-check payment-option">
-          <input class="form-check-input" type="radio" id="apple_pay" formControlName="paymentMethod" value="apple_pay">
-          <label class="form-check-label" for="apple_pay">
-            <i class="fab fa-apple-pay"></i> Apple Pay
-          </label>
-        </div>
-      </div>
-
-      <div class="mb-3">
-        <h4>Total à payer : {{ totalAmount }} €</h4>
-      </div>
-
-      <!-- Boutons compactés -->
-      <button type="submit" class="btn btn-success btn-sm-custom mb-5 me-3 btn-shadow">Valider votre paiement</button>
-      <button type="button" class="btn btn-dark btn-sm-custom mb-5" (click)="returnToOrder()">Revenir à votre commande</button>
-    </form>
-
-    <!-- Modal de validation du paiement -->
-    <div class="modal fade" id="paymentSuccessModal" tabindex="-1" aria-labelledby="paymentSuccessModalLabel" aria-hidden="true" [ngClass]="{'show d-block': paymentSuccess}" style="background-color: rgba(0, 0, 0, 0.5);">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="paymentSuccessModalLabel">Paiement réussi</h5>
-            <button type="button" class="btn-close" (click)="closeModal()"></button>
+            <div class="col-md-6">
+              <label for="cvc" class="form-label">CVC</label>
+              <input type="text" id="cvc" class="form-control" formControlName="cvc" placeholder="123">
+              <div *ngIf="paymentForm.get('cvc')?.invalid && paymentForm.get('cvc')?.touched" class="text-danger">
+                CVC invalide. Doit contenir 3 chiffres.
+              </div>
+            </div>
           </div>
-          <div class="modal-body">
-            Votre paiement a été validé avec succès. Merci pour votre commande !
+
+          <!-- Choix de la date de dépôt -->
+          <div class="mb-3">
+            <label for="depotDate" class="form-label">Choisir la date de dépôt</label>
+            <input type="date" id="depotDate" class="form-control" formControlName="depotDate">
+            <div *ngIf="paymentForm.get('depotDate')?.invalid && paymentForm.get('depotDate')?.touched" class="text-danger">
+              Veuillez choisir une date de dépôt valide.
+            </div>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary btn-sm-custom" (click)="closeModal()">Fermer</button>
+
+          <!-- Options de paiement -->
+          <div class="payment-options mb-4">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="credit_card" formControlName="paymentMethod" value="credit_card">
+              <label class="form-check-label" for="credit_card">
+                <i class="fas fa-credit-card"></i> Carte de crédit
+              </label>
+            </div>
+
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="paypal" formControlName="paymentMethod" value="paypal">
+              <label class="form-check-label" for="paypal">
+                <i class="fab fa-paypal"></i> PayPal
+              </label>
+            </div>
+
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="apple_pay" formControlName="paymentMethod" value="apple_pay">
+              <label class="form-check-label" for="apple_pay">
+                <i class="fab fa-apple-pay"></i> Apple Pay
+              </label>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <h4>Total à payer : {{ totalAmount }} €</h4>
+          </div>
+
+          <!-- Boutons compactés -->
+          <div>
+            <button type="submit" class="btn btn-success btn-sm-custom mb-3 btn-shadow me-2">Valider votre paiement</button>
+            <button type="button" class="btn btn-dark btn-sm-custom mb-3" (click)="returnToOrder()">Revenir à votre commande</button>
+          </div>
+        </form>
+
+        <!-- Modal de validation du paiement -->
+        <div class="modal fade" id="paymentSuccessModal" tabindex="-1" [ngClass]="{'show d-block': paymentSuccess}">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="paymentSuccessModalLabel">Paiement réussi</h5>
+                <button type="button" class="btn-close" (click)="closeModal()"></button>
+              </div>
+              <div class="modal-body">
+                Votre paiement a été validé avec succès. Merci pour votre commande !
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary btn-sm-custom" (click)="closeModal()">Fermer</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>

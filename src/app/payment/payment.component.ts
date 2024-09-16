@@ -5,7 +5,6 @@ import { Item, NewItem, Order } from '../typescript/entites';
 import { Router } from '@angular/router';
 import { OrderService } from '../shared/servicebusinesscase/order/order.service';
 import { NgClass, NgFor, NgIf } from '@angular/common';
-import { catchError, forkJoin, map, Observable, of } from 'rxjs';
 import { JwtService } from '../shared/servicebusinesscase/jwt/jwt.service';
 
 @Component({
@@ -39,7 +38,10 @@ export class PaymentComponent implements OnInit {
       cardNumber: ['', [Validators.required, Validators.pattern('^[0-9]{16}$')]],
       cardHolder: ['', [Validators.required]],
       expirationDate: ['', [Validators.required, Validators.pattern('^(0[1-9]|1[0-2])\/([0-9]{4})$')]],
-      cvc: ['', [Validators.required, Validators.pattern('^[0-9]{3}$')]]
+      cvc: ['', [Validators.required, Validators.pattern('^[0-9]{3}$')]],
+      depotDate: ['', Validators.required],
+      paymentMethod: ['', Validators.required]
+
     });
     console.log(this.jwt.getDecodeToken().user_id);
   }
@@ -49,16 +51,36 @@ export class PaymentComponent implements OnInit {
     return this.items.reduce((total, item) => total + item.price * item.quantity, 0);
   }
 
-    // Méthode pour valider le paiement
-    validatePayment() {
-      if (this.paymentForm.valid) {
-        // Si le formulaire est valide, afficher la modal de succès
-        this.paymentSuccess = true;
-      } else {
-        // Si le formulaire est invalide, marquer tous les champs comme touchés pour afficher les erreurs
-        this.paymentForm.markAllAsTouched();
+  validatePayment(): void {
+    if (this.paymentForm.valid) {
+      const userId = this.jwt.getDecodeToken().user_id;
+      const order: Order = { 
+      user: `/api/users/${userId}`,
+      date: new Date().toISOString(),
+      depotDate: this.paymentForm.value.depotDate,
+      paymentMethod: this.paymentForm.value.paymentMethod,
+      items: [],
       }
+      this.orderService.createOrder(order).subscribe((newOrder: Order) =>{
+        const items = this.localstorageService.getItems().map((item: Item) =>{
+         return {
+          price: item.price,
+          quantite: item.quantity,
+          product: `/api/products/${item.product.id}`,
+          statusItems: `/api/status_itemss/44`,
+          orderItems: `/api/orders/${newOrder.id}`,
+          service: item.product.services[0],
+         } 
+         
+        })
+        items.forEach((item: NewItem) =>{
+          this.orderService.createItem(item).subscribe(() =>{
+          });
+        })
+      });
     }
+    this.paymentSuccess = true;
+  }
 
 
 

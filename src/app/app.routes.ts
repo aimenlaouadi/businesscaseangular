@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { Error404Component } from './error404/error404.component';
 import { ServiceComponent } from './service/service.component';
-import { ContactComponent } from './contact/contact.component';
+import { ContactComponent } from './Formulaires/contact/contact.component';
 import { authGuard } from './shared/guards/auth.guard';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AproposComponent } from './apropos/apropos.component';

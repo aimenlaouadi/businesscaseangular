@@ -33,6 +33,8 @@ id?: number;
 user: string;
 date:string;
 items: string[];
+depotDate: string;
+paymentMethod: string;
 }
 
 
