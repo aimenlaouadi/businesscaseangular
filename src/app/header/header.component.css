@@ -1,34 +1,60 @@
-.btn{
-
-    color: white;
+/* Align center and space between items */
+.navbar-nav {
+  display: flex;
+  justify-content: center;
+  gap: 40px; /* Add space between the nav links */
+  font-weight: bold;
 }
 
-
-.btn:hover{
-    border: solid 2px #0097B2;
-    background: white;
-    color: black;
-}
-
+/* Style for the nav links */
 .navbar-nav .nav-link {
-    color: #0097B2 !important;
-    font-weight: bold;
-  }
-  
-  .navbar-nav .nav-link:hover {
-    color: #007a99 !important; 
-    border-bottom: #0097B2 solid 3px;
-  }
-  
-  .navbar-nav .dropdown-menu .dropdown-item {
-    color: #0097B2 !important;
-  }
-  
-  .navbar-nav .dropdown-menu .dropdown-item:hover {
-    color: #007a99 !important;
-  }
-  
-li{
-  color: #86A5AD;
+  color: #0C5E95; /* Use primary color for links */
+  font-size: 18px;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #007a99; /* Slight color change on hover */
+  border-bottom: solid 2px #0C5E95;
+}
+
+/* Adjust spacing for the buttons and cart */
+.d-flex {
+  gap: 20px;
+}
+
+/* Button styling */
+.login-button, .btn-inscrire {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  background-color: #1b6aa0;
+  color: white;
   font-size: 16px;
+  font-weight: bold;
+  border: 2px solid #1b6aa0;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.login-button .icon, .btn-inscrire img {
+  margin-right: 10px;
+}
+
+.login-button:hover, .btn-inscrire:hover {
+  background-color: white;
+  color: #1b6aa0;
+  border: 2px solid #1b6aa0;
+}
+
+.login-button:hover .icon {
+  content: url('https://img.icons8.com/ios-filled/50/0C5E95/user.png');
+}
+
+.btn-inscrire:hover img {
+  content: url('https://img.icons8.com/ios-filled/50/0C5E95/add-user-male.png');
 }

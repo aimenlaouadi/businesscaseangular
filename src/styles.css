@@ -3,4 +3,51 @@
     --primary-color:#0C5E95;
     --secondary-color:#86A5AD;
     --tertiary-color:#FF0509;
+
  } 
+
+ h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif; 
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+html {
+    font-family: 'Roboto', sans-serif; 
+    font-size: 16px; 
+    scroll-behavior: smooth; 
+}
+
+/* Style de base pour le bouton */
+.login-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    background-color: #1b6aa0;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: 2px solid #1b6aa0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+/* Style de l'icône */
+.login-button .icon {
+    margin-right: 10px;
+}
+
+/* Style au survol (hover) */
+.login-button:hover {
+    background-color: white;
+    color: #1b6aa0;
+    border: 2px solid #1b6aa0;
+}
+
+.login-button:hover .icon {
+    background: url('https://img.icons8.com/ios-filled/50/0C5E95/user.png');
+    margin-right: 30px;
+}

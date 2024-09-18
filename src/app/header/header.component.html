@@ -6,55 +6,44 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
 
-      <a routerLink="/"><img src="/images/logo1.png" alt="image d'une machine à laver avec des bulles" width="100px" height="100px" loading="lazy"></a>
+      <!-- Logo -->
+      <a routerLink="/" class="navbar-brand">
+        <img src="/images/logo1.png" alt="image d'une machine à laver avec des bulles" width="100px" height="100px" loading="lazy">
+      </a>
+
+      <!-- Nav links centered -->
       <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" routerLink="/">Accueil</a>
+          <a class="nav-link active" aria-current="page" routerLink="/">ACCUEIL</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" routerLink="service">Services</a>
+          <a class="nav-link active" routerLink="service">SERVICES</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" routerLink="apropos">A Propos</a>
+          <a class="nav-link active" routerLink="apropos">A PROPOS</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" routerLink="contact">Contact</a>
+          <a class="nav-link active" routerLink="contact">CONTACT</a>
         </li>
       </ul>
 
-      <!-- Gestion des boutons de connexion/inscription et de déconnexion -->
-      <div class="d-flex flex-column align-items-center"> 
-        <div *ngIf="isLogged()">
-          <span class="nav-link" *ngIf="user">Bonjour: {{ user?.username }}</span>
-        </div>
-        
-        <!-- Boutons de connexion et d'inscription selon l'état de l'utilisateur -->
-        <div class="d-flex" *ngIf="!isLogged()">
-          <!-- Bouton Se connecter -->
-          <a class="btn-connecter me-2" routerLink="/connexion" class="btn btn-secondary">
-            <img src="https://img.icons8.com/?size=30&id=IerOpHeUt2OH&format=png&color=000000"> Se connecter
-          </a>
+      <!-- Buttons and Cart -->
+      <div class="d-flex align-items-center">
+        <!-- Login button -->
+        <a class="login-button me-3" routerLink="/connexion">
+          <img class="icon" src="https://img.icons8.com/ios-filled/20/ffffff/user.png" alt="icon"> Se connecter
+        </a>
 
-          <!-- Bouton S'inscrire -->
-          <a class="btn-inscrire" routerLink="/inscription" class="btn btn-primary ms-3">
-            <img src="https://img.icons8.com/?size=30&id=IerOpHeUt2OH&format=png&color=000000"> S'inscrire
-          </a>
-        </div>
+        <!-- Register button -->
+        <a class="btn-inscrire me-3" routerLink="/inscription">
+          <img src="https://img.icons8.com/ios-filled/20/ffffff/add-user-male.png" alt="register-icon"> S'inscrire
+        </a>
 
-        <div class="d-flex" *ngIf="isLogged() else notLogged">
-          <a routerLink="/profiluser" class="btn btn-info me-2 d-flex align-items-center">
-            <i class="fas fa-user-circle fa-lg"></i> 
-          </a>
-          <button type="button" class="btn btn-secondary" (click)="logout()">Se déconnecter</button>
-
-          <!-- Icône du panier -->
-          <a class="nav-link active d-flex align-items-center ms-3" routerLink="panier">
-            <img src="https://img.icons8.com/?size=30&id=40LTSjteI583&format=png&color=000000" alt="Panier">
-          </a>
-        </div>
-        <ng-template #notLogged></ng-template>
+        <!-- Cart icon -->
+        <a class="nav-link active" routerLink="panier">
+          <img src="https://img.icons8.com/?size=30&id=40LTSjteI583&format=png&color=000000" alt="Panier">
+        </a>
       </div>
-
     </div>
   </div>
 </nav>
