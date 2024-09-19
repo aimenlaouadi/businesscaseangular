@@ -11,7 +11,7 @@
             <div class="card-body">
               <h5 class="card-title">{{ service.service_type }}</h5>
               <p class="card-text">{{ service.description }}</p>
-              <button (click)="selectService(service)" class="btn btn-primary">Sélectionner ce service</button>
+              <button (click)="selectService(service)" class="btn">Sélectionner ce service</button>
             </div>
           </div>
         </div>
@@ -41,9 +41,9 @@
                             <p class="card-text">{{ product.product_description }}</p>
                             <p class="card-text"><strong>{{ product.price }} €</strong></p>
                             <div class="d-flex align-items-center mb-3">
-                              <button class="btn btn-outline-primary btn-sm me-2" (click)="decreaseProductQuantity(product)">-</button>
+                              <button class="btn btn-outline btn-sm me-2" (click)="decreaseProductQuantity(product)">-</button>
                               <span class="me-2">Quantité : {{ product.quantity }}</span>
-                              <button class="btn btn-outline-primary btn-sm" (click)="increaseProductQuantity(product)">+</button>
+                              <button class="btn btn-outline btn-sm" (click)="increaseProductQuantity(product)">+</button>
                             </div>
                           </div>
                         </div>
@@ -60,7 +60,7 @@
           </div>
 
           <!-- Bouton pour accéder au panier et ajouter les produits -->
-          <button class="btn btn-success mt-3" (click)="addAllToCartAndGoToCart()">Ajouter au Panier</button>
+          <button class="btn  mt-3" (click)="addAllToCartAndGoToCart()">Ajouter au Panier</button>
         </div>
       </div>
     </div>

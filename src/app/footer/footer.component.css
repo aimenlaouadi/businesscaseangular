@@ -4,32 +4,24 @@
 }
 
 h4 {
-  color: #0097B2;
+  color: var(--secondary-color);
   font-weight: bold;
 }
 
-ul {
-  padding: 0;
-  list-style-type: none;
-}
 
 ul li a,p {
+  padding: 0;
   color:var(--primary-color);
   text-decoration: none;
   font-weight: bold;
+  list-style-type: none;
 }
 
-ul li a:hover {
-  color: #0097B2;
-}
 
 a {
   transition: color 0.3s ease;
 }
 
-a:hover {
-  color: #0097B2;
-}
 
 /* Style des icônes */
 .col-lg-3 img {

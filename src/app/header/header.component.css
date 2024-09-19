@@ -56,11 +56,11 @@
 }
 
 .login-button:hover .icon {
-  content: url('https://img.icons8.com/ios-filled/50/0C5E95/user.png');
+  content: url('https://img.icons8.com/ios-filled/20/0C5E95/user.png');
 }
 
 .btn-inscrire:hover img {
-  content: url('https://img.icons8.com/ios-filled/50/86A5AD/add-user-male.png');
+  content: url('https://img.icons8.com/ios-filled/20/86A5AD/add-user-male.png');
 }
 
 .nav-link img:hover {

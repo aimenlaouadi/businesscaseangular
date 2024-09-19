@@ -31,10 +31,27 @@
 html {
     font-family: 'Roboto', sans-serif; 
     font-size: 16px; 
-    scroll-behavior: smooth; 
+    scroll-behavior: smooth;
+    overflow-x: hidden; 
 }
 
-/* Style de base pour le bouton */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .title-with-bar {
+      text-align: center;
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .title-with-bar {
+      text-align: center;
+    }
+  }
+
+
+
+
+
 .login-button {
     display: flex;
     align-items: center;
@@ -56,7 +73,7 @@ html {
     margin-right: 10px;
 }
 
-/* Style au survol (hover) */
+
 .login-button:hover {
     background-color: white;
     color: #1b6aa0;
