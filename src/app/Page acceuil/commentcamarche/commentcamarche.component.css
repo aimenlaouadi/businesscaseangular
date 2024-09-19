@@ -1,31 +1,58 @@
-.commentcamarche{
-    margin-top: 150px;
-    margin-bottom: 150px;
+/* Assurer que toutes les cartes prennent la même hauteur */
+.commentcamarche .row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
+.commentcamarche .col-lg-3,
+.commentcamarche .col-md-6,
+.commentcamarche .col-sm-12 {
+  display: flex;
+  justify-content: center;
+}
 
-h1{
-  color:#0097B2;
+.commentcamarche .card {
+  width: 100%;
+  max-width: 320px; /* Limite maximale de largeur pour éviter que les cartes deviennent trop larges */
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  background-color: rgba(134, 165, 173, 0.14);
+  text-align: center;
+}
+
+.commentcamarche .card h4 {
+  margin-top: 15px;
+  font-size: 1.25rem;
+  color: #002f87;
+}
+
+.commentcamarche .card img {
+  max-width: 50px;
+  height: auto;
+}
+
+.commentcamarche .btn {
+  margin-top: auto; /* Pour pousser le bouton vers le bas de la carte */
+  background-color: var(--bg-button);
+  color: white;
+  border-radius: 5px;
+  padding: 10px 20px;
+}
+
+.commentcamarche .btn:hover{
+  background-color: white;
+  color: var(--bg-button);
   font-weight: bold;
+
 }
 
-
-.card-body{
-    padding: 10px;
+.commentcamarche .card h4, .commentcamarche .card img, .commentcamarche .btn {
+  margin-bottom: 15px;
 }
-
-.commentcamarche .col-md-3 {
-    flex: 1 0 21%;
-  }
-
-  @media (max-width: 992px) {
-    .commentcamarche .col-md-3 {
-      flex: 1 0 46%; 
-    }
-  }
-
-  @media (max-width: 576px) {
-    .commentcamarche .col-md-3 {
-      flex: 1 0 100%;
-    }
-  }

@@ -3,14 +3,30 @@
     --primary-color:#0C5E95;
     --secondary-color:#86A5AD;
     --tertiary-color:#FF0509;
+    --bg-button:#3CA0D8;
 
  } 
 
  h2, h3, h4, h5, h6 {
     font-family: 'Montserrat', sans-serif; 
     color: var(--primary-color);
-    font-weight: 700;
+    font-weight: bold;
 }
+
+.title-with-bar {
+    font-weight: bold;
+    color: var(--primary-color);
+    position: relative;
+  }
+  
+  .title-with-bar::before {
+    content: "";
+    display: inline-block;
+    width: 5px;
+    height: 100%;
+    background-color: var(--secondary-color);
+    margin-right: 10px;
+  }
 
 html {
     font-family: 'Roboto', sans-serif; 

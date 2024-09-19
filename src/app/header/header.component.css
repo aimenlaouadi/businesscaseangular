@@ -1,51 +1,39 @@
-/* Root color variables */
-:root {
-  --primary-color: #0C5E95; /* Primary color for main elements */
-  --secondary-color: #86A5AD; /* Secondary color for accents */
-  --tertiary-color: #FF0509; /* Tertiary color for warnings or highlights */
-}
-
-/* Align center and space between items */
 .navbar-nav {
-  display: flex;
   justify-content: center;
-  gap: 40px; /* Add space between the nav links */
+  gap: 20px; /* Adjusted gap for spacing */
   font-weight: bold;
 }
 
-/* Style for the nav links */
 .navbar-nav .nav-link {
-  color: var(--primary-color); /* Use primary color for links */
+  color: var(--primary-color);
   font-size: 18px;
-  text-transform: uppercase;
   transition: color 0.3s;
 }
 
 .navbar-nav .nav-link:hover {
-  color: var(--primary-color); /* Slight color change on hover */
+  color: var(--primary-color);
   border-bottom: solid 2px var(--primary-color);
+
 }
 
-/* Adjust spacing for the buttons and cart */
+/* Button and Cart Styles */
 .d-flex {
   gap: 20px;
 }
 
-/* Button styling */
 .login-button, .btn-inscrire {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   padding: 10px 20px;
   background-color: var(--primary-color);
-  color: white;
-  font-size: 16px;
+  color: white;;
   font-weight: bold;
   border: 2px solid var(--primary-color);
   border-radius: 8px;
-  cursor: pointer;
   text-decoration: none;
-  transition: all 0.3s ease;
+}
+
+.btn-inscrire {
+  background-color: var(--secondary-color);
+  border: 2px solid var(--secondary-color);
 }
 
 .login-button .icon, .btn-inscrire img {
@@ -55,7 +43,11 @@
 .login-button:hover, .btn-inscrire:hover {
   background-color: white;
   color: var(--primary-color);
-  border: 2px solid var(--primary-color);
+}
+
+.btn-inscrire:hover {
+  background-color: white;
+  color: var(--secondary-color);
 }
 
 .login-button:hover .icon {
@@ -63,10 +55,9 @@
 }
 
 .btn-inscrire:hover img {
-  content: url('https://img.icons8.com/ios-filled/50/0C5E95/add-user-male.png');
+  content: url('https://img.icons8.com/ios-filled/50/86A5AD/add-user-male.png');
 }
 
-/* Cart icon hover */
 .nav-link img:hover {
-  filter: brightness(0.8); /* Slight darkening effect */
+  filter: brightness(0.8);
 }

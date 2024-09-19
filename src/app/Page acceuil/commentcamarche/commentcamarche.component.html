@@ -1,39 +1,37 @@
-<section class="commentcamarche">
-  <div class="container mt-5">
-    <div class="row mt-5 mb-5 justify-content-center">
-      <h1 class="text-center mb-5">Comment ça marche?</h1>
-      <div class="d-flex flex-wrap justify-content-center gap-3">
-        <div class="col-md-3 mb-3 shadow">
-          <div class="card-body">
-            <img width="50" height="50" src="https://img.icons8.com/ios/50/inscription.png" alt="icone qui indique qu'on peux cliquez ici pour s'incrire"  loading="lazy"/>
-            <h4>Je m'inscris</h4>
-            <p class="card-text">inscription</p>
-            <a routerLink="inscription" class="btn btn-secondary mb-2">Accéder à l'inscription</a>
-          </div>
+<section class="commentcamarche py-5 mb-5">
+  <div class="container">
+    <div class="row mb-4">
+      <h2 class="title-with-bar">Comment ça marche ?</h2>
+    </div>
+    
+    <!-- On utilise row justify-content-center pour centrer les cartes sur les petits écrans -->
+    <div class="row justify-content-center">
+      <div class="col-lg-3 col-md-12 col-sm-12 mb-4 d-flex justify-content-center">
+        <div class="card shadow h-100 d-flex flex-column justify-content-center align-items-center p-4">
+          <img width="50" height="50" src="https://img.icons8.com/?size=50&id=59040&format=png&color=0C5E95" alt="icone inscription" loading="lazy"/>
+          <h4 class="mt-3">Inscrivez-vous</h4>
+          <a routerLink="inscription" class="btn btn-secondary mt-3">Inscription</a>
         </div>
-        <div class="col-md-3 mb-3 shadow">
-          <div class="card-body">
-            <img width="50" height="50" src="https://img.icons8.com/ios-filled/50/login-rounded-right.png" alt="icone qui indique qu'on peux cliquez ici pour accéder à la connexion"  loading="lazy"/>
-            <h4>Je me connecte</h4>
-            <p class="card-text">connexion</p>
-            <a routerLink="connexion" class="btn btn-secondary">Me connecter</a>
-          </div>
+      </div>
+      <div class="col-lg-3 col-md-12 col-sm-12 mb-4 d-flex justify-content-center">
+        <div class="card shadow h-100 d-flex flex-column justify-content-center align-items-center p-4">
+          <img width="50" height="50" src="https://img.icons8.com/?size=100&id=26211&format=png&color=0C5E95" alt="icone connexion" loading="lazy"/>
+          <h4 class="mt-3">Connectez-vous</h4>
+          <a routerLink="connexion" class="btn btn-secondary mt-3">Connexion</a>
         </div>
-        <div class="col-md-3 mb-3 shadow">
-          <div class="card-body">
-            <img width="50" height="50" src="https://img.icons8.com/ios/50/nui2.png" alt="icone qui indique qu'on peux cliquez ici pour selectionner un service" loading="lazy" />
-            <h4>Je sélectionne le service</h4>
-            <p class="card-text">passage de commande</p>
-            <a routerLink="service" class="btn btn-secondary">Accéder aux services</a>
-          </div>
+      </div>
+      <div class="col-lg-3 col-md-12 col-sm-12 mb-4 d-flex justify-content-center">
+        <div class="card shadow h-100 d-flex flex-column justify-content-center align-items-center p-4">
+          <img width="50" height="50" src="https://img.icons8.com/?size=50&id=47820&format=png&color=0C5E95" alt="icone service" loading="lazy" />
+          <h4 class="mt-3">Passez commande</h4>
+          <a routerLink="service" class="btn btn-secondary mt-3">Commander</a>
         </div>
-        <div class="col-md-3 mb-3 shadow">
-          <div class="card-body">
-            <img width="50" height="50" src="https://img.icons8.com/pastel-glyph/64/card-in-use--v4.png" alt="icone qui indique qu'on peux cliquez ici pour commander" loading="lazy"/>
-            <h4>Je passe commande</h4>
-            <p class="card-text">payer</p>
-            <a routerLink="panier" class="btn btn-secondary">Commander</a>
-          </div>
+      </div>
+      <div class="col-lg-3 col-md-12 col-sm-12 mb-4 d-flex justify-content-center">
+        <div class="card shadow h-100 d-flex flex-column justify-content-center align-items-center p-4">
+          <img width="50" height="50" src="https://img.icons8.com/?size=50&id=215&format=png&color=0C5E95" alt="icone paiement" loading="lazy"/>
+          <h4 class="mt-3">Effectuez le paiement</h4>
+          <a routerLink="panier" class="btn btn-secondary mt-3">Paiement</a>
         </div>
       </div>
     </div>
