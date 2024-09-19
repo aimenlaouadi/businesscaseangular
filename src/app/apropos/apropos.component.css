@@ -6,10 +6,6 @@
   padding-bottom: 60px;
 }
 
-h2,h4,h5 {
-  color:#007A99;
-  font-weight: bold;
-}
 
 .text-justify {
   text-align: justify;
@@ -66,7 +62,7 @@ h2,h4,h5 {
 }
 
 .notre-philosophie, h3{
-  background: #007A99;
+  background: var(--secondary-color);
   color:white;
   font-weight: bold;
  

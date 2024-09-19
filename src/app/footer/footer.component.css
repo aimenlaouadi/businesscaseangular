@@ -1,11 +1,6 @@
-/* Styles de base pour le footer */
-.bg-footer {
-  background-color: #F5F7FA; /* Fond du footer */
-}
 
-p{
-  color: var(--primary-color);
-  font-weight: bold;
+.bg-footer {
+  background-color: #F5F7FA; 
 }
 
 h4 {
@@ -18,9 +13,10 @@ ul {
   list-style-type: none;
 }
 
-ul li a {
+ul li a,p {
   color:var(--primary-color);
   text-decoration: none;
+  font-weight: bold;
 }
 
 ul li a:hover {
