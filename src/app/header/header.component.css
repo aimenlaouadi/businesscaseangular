@@ -53,6 +53,7 @@
 .btn-inscrire:hover {
   background-color: white;
   color: var(--secondary-color);
+ 
 }
 
 .login-button:hover .icon {

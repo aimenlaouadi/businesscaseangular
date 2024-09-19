@@ -1,14 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Shrikhand|Roboto&display=swap');
 
-body {
-  background: #00b4ff;
-  color: #333;
-  font-family: 'Lato', Arial, sans-serif;
-  height: 100vh;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-}
+
 
 .centered {
   margin: 0 auto;
@@ -31,27 +23,22 @@ a {
 
 /* Form Styles */
 .section-background {
-  background: lightgray;
-  background-repeat: no-repeat;
-  background-size: cover;
   height: 800px;
   width: 100%;
 }
 
 .form-margin {
   padding: 40px;
-  background: #0097B2;
+  background: var(--secondary-color);
   color: white;
   font-weight: bold;
   border: 3px solid lightgray;
   border-radius: 20px;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
   position: relative;
+  
 }
 
-h2 {
-  font-weight: bold;
-}
 
 .lien {
   margin-left: 10px;
@@ -62,19 +49,19 @@ h2 {
 }
 
 .button {
-  background: #0097B2;
+  background: var(--primary-color);
   font-weight: bold;
-  color: #ffffff;
-  border: #ffffff solid 2px;
-  padding: 5px;
+  color: #fff;
+  border: 2px solid #fff;
+  padding: 10px 20px;
   margin-top: 15px;
-  text-align: center;
+  border-radius: 5px;
 }
 
 .button:hover {
-  background: #ffffff;
-  color: #0097B2;
-  border-color: #0097B2;
+  background: #fff;
+  color: var(--primary-color);
+  border-color: var(--primary-color);
   transform: scale(1.05);
   box-shadow: 0 8px 15px rgba(0, 151, 178, 0.3);
 }

@@ -17,7 +17,7 @@ html, body {
 
 .contact-form {
   padding: 40px;
-  background: #0097B2;
+  background: var(--secondary-color);
   color: white;
   font-weight: bold;
   filter: opacity(100%);
@@ -49,25 +49,26 @@ h2 {
 }
 
 .accordion-button {
-  background-color: #0097B2; 
+  background-color: var(--secondary-color); 
   color: white;
   font-weight: bold; 
 }
 
-.button{
-background: #0097B2;
-font-weight: bold;
-color: #ffffff;
-border: #ffffff solid 2px;
-padding: 8px;
+.button {
+  background: var(--primary-color);
+  font-weight: bold;
+  color: #fff;
+  border: 2px solid #fff;
+  padding: 10px 20px;
+  margin-top: 15px;
+  border-radius: 5px;
 }
 
-
 .button:hover {
-  background: #ffffff;
-  color: #0097B2;
-  border-color: #0097B2;
-  transform: scale(1.05); 
+  background: #fff;
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+  transform: scale(1.05);
   box-shadow: 0 8px 15px rgba(0, 151, 178, 0.3);
 }
 

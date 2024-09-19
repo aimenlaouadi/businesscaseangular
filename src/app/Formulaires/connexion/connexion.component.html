@@ -14,18 +14,19 @@
                 <label for="username">Nom d'utilisateur</label>
                 <input id="username" formControlName="username" type="text" class="form-control" required>
               </div>
-          
+
               <div class="form-group">
                 <label for="password">Mot de passe</label>
                 <input id="password" formControlName="password" type="password" class="form-control" required>
               </div>
             </div>
-          
-            <button type="submit" class="button" [disabled]="loginForm.invalid">Se connecter</button>
-            <a routerLink="/inscription" class="lien">Nouveau client? Créer un compte</a>
-          </form>
-          
 
+            <div class="login-container">
+              <button type="submit" class="button" [disabled]="loginForm.invalid">Se connecter</button>
+              <span><a routerLink="/inscription" class="lien">Pas de compte, clicker-ici</a></span>
+            </div>
+
+          </form>
         </div>
 
       </div>

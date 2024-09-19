@@ -12,7 +12,7 @@ body {
 /* FORMULAIRE */
 .form-margin {
   padding: 40px;
-  background: #0097B2;
+  background: var(--secondary-color);
   color: white;
   font-weight: bold;
   border: 3px solid lightgray;
@@ -23,30 +23,29 @@ body {
   max-width: 500px;
 }
 
-.btn {
-  background: lightgray;
-  color: white;
-  font-weight: bold;
-}
-
-.btn:hover {
-  background: #0097B2;
-}
-
 h2 {
   font-weight: bold;
 }
 
-.lien {
-  margin-left: 10px;
-  font-size: small;
-  text-decoration: none;
-  color: white;
-  font-weight: bold;
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
 }
 
 .button {
-  background: #0097B2;
+  margin-bottom: 10px; 
+}
+
+.lien {
+  font-size: small;
+  text-decoration: none;
+  color: white;
+  font-weight: 700;
+}
+
+.button {
+  background: var(--primary-color);
   font-weight: bold;
   color: #fff;
   border: 2px solid #fff;
@@ -57,8 +56,8 @@ h2 {
 
 .button:hover {
   background: #fff;
-  color: #0097B2;
-  border-color: #0097B2;
+  color: var(--primary-color);
+  border-color: var(--primary-color);
   transform: scale(1.05);
   box-shadow: 0 8px 15px rgba(0, 151, 178, 0.3);
 }
