@@ -63,4 +63,9 @@ export class CartSummaryComponent implements OnInit {
     this.cartItems = [];
     this.localstorageService.saveItems(this.cartItems); // Mettre à jour le localStorage
   }
+
+  closeCart() {
+    this.cartItems = [];
+  }
+
 }

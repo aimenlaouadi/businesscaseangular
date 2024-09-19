@@ -4,7 +4,6 @@ html, body {
 }
 
 .contact {
-  background: lightgray;
   min-height: 100vh; 
   display: flex;
   flex-direction: column;
@@ -58,7 +57,7 @@ h2 {
   background: var(--primary-color);
   font-weight: bold;
   color: #fff;
-  border: 2px solid #fff;
+  border: 2px solid var(--primary-color);
   padding: 10px 20px;
   margin-top: 15px;
   border-radius: 5px;
@@ -179,3 +178,39 @@ h2 {
   transform: scale(0.3);
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+input, select {
+  width: 100%;
+  height: 60px;
+  padding: 8px;
+  border: 1px solid var(--primary-color);
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+
+textarea{
+  width: 100%;
+  height: 60px;
+  padding: 8px;
+  border: 1px solid var(--primary-color);
+  border-radius: 5px;
+  font-size: 1rem;
+  height: 200px;
+}
+
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--texte);
+}
+
+label {
+  font-size: 0.875rem;
+  margin-bottom: 8px;
+}

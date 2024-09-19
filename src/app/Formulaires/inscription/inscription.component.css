@@ -52,7 +52,7 @@ a {
   background: var(--primary-color);
   font-weight: bold;
   color: #fff;
-  border: 2px solid #fff;
+  border: 2px solid var(--primary-color);
   padding: 10px 20px;
   margin-top: 15px;
   border-radius: 5px;

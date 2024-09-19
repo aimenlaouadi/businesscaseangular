@@ -1,13 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Shrikhand|Roboto&display=swap');
 
-body {
-  background: #00b4ff;
-  color: #333;
-  font-family: 'Roboto', Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-}
 
 /* FORMULAIRE */
 .form-margin {
@@ -33,10 +25,6 @@ h2 {
   align-items: center; 
 }
 
-.button {
-  margin-bottom: 10px; 
-}
-
 .lien {
   font-size: small;
   text-decoration: none;
@@ -48,7 +36,6 @@ h2 {
   background: var(--primary-color);
   font-weight: bold;
   color: #fff;
-  border: 2px solid #fff;
   padding: 10px 20px;
   margin-top: 15px;
   border-radius: 5px;
@@ -64,9 +51,6 @@ h2 {
 
 /* Responsivité */
 .section-background {
-  background: lightgray;
-  background-repeat: no-repeat;
-  background-size: cover;
   height: auto;
   min-height: 100vh;
   width: 100%;

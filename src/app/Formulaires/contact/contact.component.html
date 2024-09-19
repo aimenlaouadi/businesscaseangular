@@ -2,7 +2,8 @@
   <div class="container">
     <div class="row align-items-center mb-4">
       <div class="col-md-12 text-center">
-        <h4 class="mt-4">Nous sommes à votre écoute. Envoyez-nous vos questions ou commentaires.</h4>
+        <h4 class="mt-4 ">Nous sommes à votre écoute.</h4>
+        <h4>Envoyez-nous vos questions ou commentaires.</h4>
       </div>
     </div>
 
@@ -16,29 +17,29 @@
         </div>
         
         <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
-          <h2>Écrivez-nous</h2>
-          
-          <div class="mb-3">
-            <label for="lastname" class="form-label text-white">Nom</label>
-            <input type="text" formControlName="lastname" class="form-control" id="lastname" placeholder="Nom">
+          <h2 class="text-center display-5 mb-3">Contactez-nous</h2>
+          <div class="row">
+            <div class="col-6">
+              <input type="text" formControlName="lastname" class="form-control" id="lastname" placeholder="Nom">
+            </div>
+            <div class="col-6">
+              <input type="text" formControlName="firstname" class="form-control" id="firstname" placeholder="Prénom">
+            </div>
           </div>
-          
-          <div class="mb-3">
-            <label for="firstname" class="form-label text-white">Prénom</label>
-            <input type="text" formControlName="firstname" class="form-control" id="firstname" placeholder="Prénom">
-          </div>
-          
-          <div class="mb-3">
-            <label for="email" class="form-label text-white">E-mail</label>
+          <div class="mb-4">
+    
             <input type="email" formControlName="email" class="form-control" id="email" placeholder="E-mail">
           </div>
-          
+          <div>
+            <input type="text" formControlName="object" class="form-control" id="object" placeholder="Objet"> 
+          </div>
           <div class="mb-4">
-            <label for="message" class="form-label text-white">Message</label>
+          
             <textarea formControlName="message" class="form-control" id="message" rows="4" placeholder="Votre message"></textarea>
           </div>
-          
-          <button type="submit" class="button">Envoyer</button>
+          <div class="col-6">
+            <button type="submit" class="button">Envoyer</button>
+          </div>
         </form>
       </div>
     </div>

@@ -6,18 +6,18 @@
 
       <div class="col-lg-6 col-md-8 form-margin">
 
-        <div class="mb-4 ">
-          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="container col-md-6">
-            <h2>Connexion</h2>
+        <div>
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="container">
+            <h2 class="text-center display-5 mb-3">Connexion</h2>
             <div formGroupName="credentials">
-              <div class="form-group">
-                <label for="username">Nom d'utilisateur</label>
-                <input id="username" formControlName="username" type="text" class="form-control" required>
+              <div class="form-group mb-4">
+                
+                <input id="username" formControlName="username" type="text" class="form-control w-100" required placeholder="Nom d'utilisateur">
               </div>
 
-              <div class="form-group">
-                <label for="password">Mot de passe</label>
-                <input id="password" formControlName="password" type="password" class="form-control" required>
+              <div class="form-group mb-4">
+                
+                <input id="password" formControlName="password" type="password" class="form-control w-100" required placeholder="Mot de passe">
               </div>
             </div>
 
@@ -25,16 +25,11 @@
               <button type="submit" class="button" [disabled]="loginForm.invalid">Se connecter</button>
               <span><a routerLink="/inscription" class="lien">Pas de compte, clicker-ici</a></span>
             </div>
-
           </form>
         </div>
-
       </div>
-
     </div>
-
   </div>
-
 </section>
 
 

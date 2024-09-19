@@ -22,7 +22,8 @@ export class ContactComponent {
       lastname: ['', Validators.required],
       firstname: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      message: ['', Validators.required]
+      message: ['', Validators.required],
+      object: ['', Validators.required],
     });
   }
 
