@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { LocalstorageService } from '../shared/servicebusinesscase/localstorage/localstorage.service';
-import { Service, Product, Item } from '../typescript/entites'; 
+import { LocalstorageService } from '../../shared/servicebusinesscase/localstorage/localstorage.service';
+import { Service, Product, Item } from '../../typescript/entites'; 
 import { Router } from '@angular/router';
 import { NgClass, NgFor, NgIf } from '@angular/common';
-import { OrderService } from '../shared/servicebusinesscase/order/order.service';
+import { OrderService } from '../../shared/servicebusinesscase/order/order.service';
 import { CartSummaryComponent } from '../cart-summary/cart-summary.component';
 
 @Component({

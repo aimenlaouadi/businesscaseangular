@@ -16,13 +16,16 @@
             <button class="btn btn-outline btn-sm me-2" (click)="increaseItemQuantity(item)">+</button>
             <span class="me-2">Prix Total : {{ item.price * item.quantity }} €</span>
             <!-- Bouton supprimer -->
-            <button class=" btn-outline-danger btn-sm ms-2" (click)="removeItem(item)">Supprimer</button>
+            <button class=" btn-outline-danger btn-sm ms-2 mt-3" (click)="removeItem(item)">Supprimer</button>
           </div>
         </li>
       </ul>
       <h4>Total général : {{ calculateTotal() }} €</h4>
-      <button class="btn  mt-3" (click)="validateOrder()">Valider ma commande</button>
-      <button class=" btn-danger mt-3 ms-2" (click)="clearCart()">Vider le panier</button>
+      <div class="d-flex gap-2 mt-3">
+        <button class="btn" (click)="validateOrder()">Valider ma commande</button>
+        <button class="btn-outline-danger" (click)="clearCart()">Vider le panier</button>
+      </div>
+      
     </div>
     <div *ngIf="items.length === 0">
       <p>Votre panier est vide.</p>

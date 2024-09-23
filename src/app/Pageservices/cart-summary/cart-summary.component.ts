@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'; 
-import { LocalstorageService } from '../shared/servicebusinesscase/localstorage/localstorage.service'; 
-import { Item } from '../typescript/entites'; 
+import { LocalstorageService } from '../../shared/servicebusinesscase/localstorage/localstorage.service'; 
+import { Item } from '../../typescript/entites'; 
 import { NgFor, NgIf } from '@angular/common';
 
 @Component({

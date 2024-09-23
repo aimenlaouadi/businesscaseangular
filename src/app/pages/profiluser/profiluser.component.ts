@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ProfiluserService } from '../shared/servicebusinesscase/profiluserservice/profiluser.service';
+import { ProfiluserService } from '../../shared/servicebusinesscase/profiluserservice/profiluser.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AuthService } from '../shared/servicebusinesscase/authentification/authservice.service';
+import { AuthService } from '../../shared/servicebusinesscase/authentification/authservice.service';
 import { CommonModule } from '@angular/common';
-import { JwtService } from '../shared/servicebusinesscase/jwt/jwt.service';
+import { JwtService } from '../../shared/servicebusinesscase/jwt/jwt.service';
 
 @Component({
   selector: 'app-profiluser',

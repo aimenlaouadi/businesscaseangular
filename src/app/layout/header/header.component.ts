@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ProfiluserService } from '../shared/servicebusinesscase/profiluserservice/profiluser.service';
-import { AuthService } from '../shared/servicebusinesscase/authentification/authservice.service';
+import { ProfiluserService } from '../../shared/servicebusinesscase/profiluserservice/profiluser.service';
+import { AuthService } from '../../shared/servicebusinesscase/authentification/authservice.service';
 import { Router, RouterLink } from '@angular/router';
 import { NgIf } from '@angular/common';
-import { User } from '../typescript/entites';
+import { User } from '../../typescript/entites';
 
 @Component({
   selector: 'app-header',
