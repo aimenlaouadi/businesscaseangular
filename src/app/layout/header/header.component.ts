@@ -8,13 +8,12 @@ import { User } from '../../typescript/entites';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  standalone: true,  
-  imports: [RouterLink, NgIf],  
+  standalone: true,
+  imports: [RouterLink, NgIf],
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
- user: any = {};
-  iduser: number | null = null;  // Ajout de la propriété iduser
+  user: User | null = null;  // Type plus spécifique pour l'utilisateur
 
   constructor(
     private authService: AuthService,
@@ -24,21 +23,15 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.authService.isLogged()) {
-      this.authService.fetchCurrentUser().subscribe((user: User) => {
-        this.user = user;
-        this.iduser = user.id;  // Enregistre l'id de l'utilisateur connecté
-        console.log('Utilisateur connecté:', user);
-      });
-      this.loadUser();
-    }
-  }
-
-
-  loadUser(): void {
-    if (this.iduser) {
-      this.profiluserService.getUser(this.iduser).subscribe((data: User) => {
-        this.user = data;
-       
+      // Récupérer l'utilisateur connecté
+      this.authService.fetchCurrentUser().subscribe({
+        next: (user: User) => {
+          this.user = user;  // Stocke l'utilisateur récupéré
+          console.log('Utilisateur connecté:', user);
+        },
+        error: (err) => {
+          console.error('Erreur lors de la récupération de l\'utilisateur', err);
+        }
       });
     }
   }
@@ -48,9 +41,9 @@ export class HeaderComponent implements OnInit {
     return this.authService.isLogged();
   }
 
-  // Déconnecter l'utilisateur
+  // Déconnecter l'utilisateur et rediriger
   logout(): void {
     this.authService.logout();
-    this.router.navigate(['/']);
+    this.router.navigate(['/']);  // Redirection vers l'accueil ou autre route
   }
 }

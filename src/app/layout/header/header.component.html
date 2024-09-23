@@ -1,5 +1,5 @@
-<header class="header">
-  <div class="row">
+<header>
+  <div class="row header">
     <div class="col-12">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
@@ -32,16 +32,36 @@
               </li>
             </ul>
 
-            <!-- Boutons de connexion et panier -->
-            <div class="d-flex align-items-center">
-              <a class="login-button me-1" routerLink="/connexion">
-                <img class="icon" src="https://img.icons8.com/ios-filled/20/ffffff/user.png" alt="icon"> Se connecter</a>
-              <a class="btn-inscrire me-3" routerLink="/inscription">
-                <img src="https://img.icons8.com/ios-filled/20/ffffff/add-user-male.png" alt="register-icon"> S'inscrire</a>
-              <a class="nav-link active" routerLink="panier">
-                <img src="https://img.icons8.com/?size=30&id=40LTSjteI583&format=png&color=000000" alt="Panier">
+            <!-- Boutons de connexion et d'inscription selon l'état de l'utilisateur -->
+            <div class="d-flex" *ngIf="!isLogged(); else loggedIn">
+              <!-- Bouton Se connecter -->
+              <a class="login-button" routerLink="/connexion">
+                <img class="icon" src="https://img.icons8.com/?size=30&id=IerOpHeUt2OH&format=png&color=0C5E95"> Se connecter
+              </a>
+
+              <!-- Bouton S'inscrire -->
+              <a class=" btn-inscrire me-2" routerLink="/inscription">
+                <img src="https://img.icons8.com/?size=30&id=IerOpHeUt2OH&format=png&color=86A5AD"> S'inscrire
               </a>
             </div>
+
+            <!-- Si l'utilisateur est connecté -->
+            <ng-template #loggedIn>
+              <div class="d-flex align-items-center">
+                <!-- Bouton Mon Profil -->
+                <a routerLink="/profiluser" class="login-button">
+                  <i class="fas fa-user-circle fa-lg"></i> Mon Profil
+                </a>
+
+                <!-- Bouton Se déconnecter -->
+                <button type="button" class=" btn-inscrire me-2" (click)="logout()">Se déconnecter</button>
+              </div>
+            </ng-template>
+
+            <!-- Panier visible pour tout le monde -->
+            <a class="nav-link active" routerLink="panier">
+              <img src="https://img.icons8.com/?size=30&id=40LTSjteI583&format=png&color=000000" alt="Panier">
+            </a>
           </div>
         </div>
       </nav>

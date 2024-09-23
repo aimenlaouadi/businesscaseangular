@@ -51,7 +51,7 @@ export class InscriptionComponent {
              
               setTimeout(() => {
                 this.showPopup = false;
-                this.router.navigate(['dashboard']); // Redirection après connexion
+                this.router.navigate(['/']); // Redirection après connexion
               }, 3000);
             },
             error: (loginError) => {

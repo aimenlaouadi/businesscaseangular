@@ -3,7 +3,6 @@ import { Error404Component } from './error404/error404.component';
 import { ServiceComponent } from './Pageservices/service/service.component';
 import { ContactComponent } from './Formulaires/contact/contact.component';
 import { authGuard } from './shared/guards/auth.guard';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { AproposComponent } from './Pageapropos/apropos/apropos.component';
 import { PanierComponent } from './pages/panier/panier.component';
 import { HomeComponent } from './Page acceuil/home/home.component';
@@ -18,7 +17,6 @@ export const routes: Routes = [
     {path:'inscription' , component:InscriptionComponent},
     {path:'connexion' , component:ConnexionComponent},
     {path:'contact' , component:ContactComponent},
-    {path:'dashboard' , component:DashboardComponent},
     {path:'apropos' , component:AproposComponent},
     {path:'panier' , component:PanierComponent},
     {path:'payment' , component:PaymentComponent, canActivate: [authGuard] },
