@@ -1,14 +1,21 @@
 .bg-profil{
-    background: #0097B2;
+    background: var(--primary-color);
 }
 
 h2{
-    color: #0097B2;
+    color: var(--primary-color);
     font-weight: bold;
 }
 
 h3{
+    color: white;
     font-weight: bold;
+}
+
+.btn-update{
+    border-radius: 5px;
+    padding: 4px;
+    background: var(--secondary-color);
 }
 
 .profil{

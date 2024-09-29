@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { LocalstorageService } from '../../shared/servicebusinesscase/localstorage/localstorage.service';
-import { Item, NewItem, Order } from '../../typescript/entites';
+import { LocalstorageService } from '../shared/servicebusinesscase/localstorage/localstorage.service';
+import { Item, NewItem, Order } from '../typescript/entites';
 import { Router } from '@angular/router';
-import { OrderService } from '../../shared/servicebusinesscase/order/order.service';
+import { OrderService } from '../shared/servicebusinesscase/order/order.service';
 import { NgClass, NgFor, NgIf } from '@angular/common';
-import { JwtService } from '../../shared/servicebusinesscase/jwt/jwt.service';
+import { JwtService } from '../shared/servicebusinesscase/jwt/jwt.service';
 
 @Component({
   selector: 'app-payment',
