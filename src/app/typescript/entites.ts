@@ -6,7 +6,7 @@
     lastname: string;
     firstname: string;
     telephone: string;
-    password: string;
+    orders: Order[];
   }
 
 

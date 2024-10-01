@@ -31,8 +31,6 @@ export class ProfiluserService {
     return throwError(() => new Error('Something bad happened; please try again later.'));
   }
 
-
-
   updateUser(id: number, user: User): Observable<User> {
     return this.http.put<User>(`${this.apiUrl}/users/${id}`, user).pipe(
       tap(response => console.log('Réponse de la mise à jour :', response)),
@@ -47,3 +45,6 @@ export class ProfiluserService {
     return this.http.delete<void>(`${this.apiUrl}/users/${id}`);
   }
 }
+
+
+

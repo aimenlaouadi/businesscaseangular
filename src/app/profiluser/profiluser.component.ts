@@ -6,6 +6,7 @@ import { AuthService } from '../shared/servicebusinesscase/authentification/auth
 import { CommonModule } from '@angular/common';
 import { JwtService } from '../shared/servicebusinesscase/jwt/jwt.service';
 
+
 @Component({
   selector: 'app-profiluser',
   standalone: true,
@@ -15,6 +16,7 @@ import { JwtService } from '../shared/servicebusinesscase/jwt/jwt.service';
 })
 export class ProfiluserComponent implements OnInit {
   user: any = {};
+  orders: any[] = [];
   form!: FormGroup;
   message: string = '';
   showSuccessMessage: boolean = false;
@@ -24,10 +26,10 @@ export class ProfiluserComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private profiluserService: ProfiluserService,
-    private route: ActivatedRoute,
     private router: Router,
     private authService: AuthService,
     private jwt: JwtService,
+
   ) {}
 
   iduser: number = this.jwt.getDecodeToken().user_id;
@@ -40,9 +42,8 @@ export class ProfiluserComponent implements OnInit {
       lastname: ['', Validators.required],
       firstname: ['', Validators.required],
       telephone: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]], // Validation du numéro de téléphone à 10 chiffres
-      password: ['', [Validators.required, Validators.minLength(6)]],  // Ajout du champ mot de passe avec validation
-      confirmPassword: ['', Validators.required],  // Champ de confirmation du mot de passe
-    }, { validator: this.passwordMatchValidator });
+
+    }), 
     this.loadUser();
  
     
@@ -53,14 +54,13 @@ export class ProfiluserComponent implements OnInit {
     this.profiluserService.getUser(this.iduser).subscribe(
       user => {
         this.user = user;
+        this.orders = user.orders || [];
         console.log(this.user);
         this.form.patchValue({
           username: this.user.username,
           lastname: this.user.lastname,
           firstname: this.user.firstname,
           telephone: this.user.telephone,
-          password: '',
-          confirmPassword: ''
         });
       },
       error => {
@@ -69,12 +69,6 @@ export class ProfiluserComponent implements OnInit {
     );
   }
 
-  // Validation de correspondance des mots de passe
-  passwordMatchValidator(form: FormGroup) {
-    const password = form.get('password')?.value;
-    const confirmPassword = form.get('confirmPassword')?.value;
-    return password === confirmPassword ? null : { mismatch: true };
-  }
 
   // Fonction pour mettre à jour l'utilisateur
   updateUser(): void {

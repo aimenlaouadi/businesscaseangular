@@ -42,5 +42,4 @@ addItemToCart(item: Item): Observable<Item> {
     return this.http.post(`${this.apiUrl}/itemss`, item)
   }
   
-
 }
