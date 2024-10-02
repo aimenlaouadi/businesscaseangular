@@ -65,7 +65,7 @@
               <ul class="list-group">
                 <!-- Correction ici : utiliser 'order.items' au lieu de 'order.item' -->
                 <li *ngFor="let item of order.items" class="list-group-item">
-                  Produit : {{ item.product.name }}
+                  Produit : {{ item.product_name }}
                   <br>Quantité : {{ item.quantite }}
                   <br>Prix : {{ item.price }} €
                   <br>Statut : {{ item.statusItems.type }}

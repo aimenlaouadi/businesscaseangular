@@ -58,14 +58,7 @@
     text-decoration: none;
   }
   
-  .close-btn{
-    background: var(--primary-color);
-    border: var(--primary-color);
-    border-radius:5px ;
-    color: white;
-  }
-
-  .close-btn:hover{
-    background: var(--primary-color);
-    color: white;
-  }
+.close{
+  border: none;
+  background: none;
+}

@@ -1,6 +1,6 @@
 <div class="cart-summary" *ngIf="cartItems.length > 0">
   <div class="text-end">
-    <button class="close-btn" (click)="closeCart()">×</button>
+    <button class="close" (click)="closeCart()">×</button>
   </div>
   <h5>Résumé du panier</h5>
   <ul *ngFor="let item of cartItems; let i = index" class="border shadow-sm rounded mb-3 p-3">
