@@ -33,10 +33,10 @@ export class ConnexionComponent implements OnInit {
       const { username, password } = this.loginForm.value.credentials;
       this.authService.login({ username, password }).subscribe(
         (token) => {
-          console.log('Token received:', token); // Pour déboguer
+          console.log('Token received:', token); 
           this.authService.saveToken(token.token);
-          //if (role === user)  this.router.navigate(['/service']); tu aura acces a tel page
-          this.router.navigate(['/']); 
+         
+          this.router.navigate(['payment']); 
         },
         error => {
           console.error('Login failed', error);
