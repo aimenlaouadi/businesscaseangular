@@ -67,7 +67,6 @@ export class PaymentComponent implements OnInit {
           price: item.price,
           quantite: item.quantity,
           product: `/api/products/${item.product.id}`,
-          statusItems: `/api/status_itemss/46`,
           orderItems: `/api/orders/${newOrder.id}`,
           service: item.product.services[0],
          } 
