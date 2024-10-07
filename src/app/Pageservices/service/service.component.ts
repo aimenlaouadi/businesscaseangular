@@ -99,12 +99,12 @@ export class ServiceComponent implements OnInit {
 
   // Augmenter la quantité d'un produit
   increaseProductQuantity(product: Product): void {
-    product.quantity = (product.quantity || 1) +1;
+    product.quantity = (product.quantity || 0) +1;
   }
 
   // Diminuer la quantité d'un produit
   decreaseProductQuantity(product: Product): void {
-    if (product.quantity && product.quantity > 1) {
+    if (product.quantity && product.quantity > 0) {
       product.quantity--;
     }
   }

@@ -29,7 +29,7 @@ export class PanierComponent implements OnInit {
 
   // Méthode pour diminuer la quantité d'un item
   decreaseItemQuantity(item: Item): void {
-    if (item.quantity > 1) {
+    if (item.quantity > 0) {
       item.quantity--;
       this.localstorageService.saveItems(this.items);  // Sauvegarder les items mis à jour dans le localStorage
     }
@@ -48,8 +48,18 @@ export class PanierComponent implements OnInit {
 
   // Méthode pour valider la commande
   validateOrder(): void {
-    this.router.navigate(['/payment']);
+    // Vérifie s'il y a des articles avec une quantité supérieure à 0
+    const hasItemsInCart = this.items.some(item => item.quantity > 0);
+    
+    if (hasItemsInCart) {
+      // Redirige vers la page de paiement si la condition est remplie
+      this.router.navigate(['/payment']);
+    } else {
+      // Sinon, affiche un message d'erreur ou empêche l'accès
+      alert('Votre panier est vide ou contient uniquement des articles avec une quantité de zéro.');
+    }
   }
+  
 
   removeItem(item: any): void {
     const index = this.items.indexOf(item);

@@ -10,9 +10,9 @@
     <li class="d-flex align-items-center justify-content-between">
       <img class="card-img-top img-fluid" [src]="'/images/' + item.product.images" alt="{{item.product.product_name}}" style="width: 50px; height: 50px">
       <button class="ajouter" (click)="decreaseQuantity(i)">-</button>
-      <span>Qte: {{ item.quantity }}</span>
+      <p class="mt-3"><span>Qte: {{ item.quantity }}</span></p>
       <button class="ajouter" (click)="increaseQuantity(i)">+</button>
-      <span>{{ item.price }} €</span>
+      <p class="mt-3"><span>{{ item.price }} €</span></p>
     </li>
     <!-- Boutons pour gérer la quantité -->
     <li class="mt-2">
