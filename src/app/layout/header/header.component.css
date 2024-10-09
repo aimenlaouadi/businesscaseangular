@@ -67,3 +67,25 @@
 .nav-link img:hover {
   filter: brightness(0.8);
 }
+
+@media (max-width: 768px) {
+  .navbar-nav {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .navbar-nav .nav-link:hover {
+    border-bottom: none;
+  
+  }
+
+.nav-link {
+margin-top: 10px;
+}
+
+.d-flex {
+  flex-direction: column;
+  align-items: flex-start; /* Aligner les éléments à gauche */
+  gap: 10px; /* Espacement entre les boutons */
+}
+
+}

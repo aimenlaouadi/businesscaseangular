@@ -79,3 +79,8 @@
   margin-bottom: 100px;
 }
 
+@media (max-width: 768px) {
+  .notre-histoire{
+    margin-bottom: 300px;
+  }
+}
